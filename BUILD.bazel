@@ -1,0 +1,35 @@
+load("@rules_pkg//:pkg.bzl", "pkg_tar")
+load("@io_bazel_rules_docker//docker/package_managers:download_pkgs.bzl", "download_pkgs")
+load("@io_bazel_rules_docker//docker/toolchain_container:toolchain_container.bzl", "toolchain_container")
+
+download_pkgs(
+    name = "dep_debs",
+    image_tar = "@debian11//image",
+    packages = [
+        "build-essential",
+        "ca-certificates",
+        "git",
+        "libstdc++-10-dev",
+        "python",
+        "python3",
+        "python3-distutils",
+    ],
+)
+
+pkg_tar(
+    name = "bazelisk_bin",
+    files = {
+        "@bazelisk//file": "/usr/local/bin/bazel",
+    },
+    mode = "0755",
+)
+
+toolchain_container(
+    name = "bazelisk",
+    base = "@debian11//image",
+    entrypoint = ["/usr/local/bin/bazel"],
+    installables_tar = ":dep_debs.tar",
+    tars = [
+        ":bazelisk_bin",
+    ],
+)
