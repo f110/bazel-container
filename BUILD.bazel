@@ -1,6 +1,7 @@
 load("@rules_pkg//:pkg.bzl", "pkg_tar")
 load("@io_bazel_rules_docker//docker/package_managers:download_pkgs.bzl", "download_pkgs")
 load("@io_bazel_rules_docker//docker/toolchain_container:toolchain_container.bzl", "toolchain_container")
+load("@io_bazel_rules_docker//container:container.bzl", "container_push")
 
 download_pkgs(
     name = "dep_pkgs",
@@ -29,7 +30,19 @@ toolchain_container(
     base = "@debian11//image",
     entrypoint = ["/usr/local/bin/bazel"],
     installables_tar = "@dep_pkgs//file",
+    labels = {
+        "org.opencontainers.image.source": "https://github.com/f110/bazel-container",
+    },
     tars = [
         ":bazelisk_bin",
     ],
+)
+
+container_push(
+    name = "publish",
+    format = "Docker",
+    image = ":bazelisk",
+    registry = "ghcr.io",
+    repository = "f110/bazel-container",
+    tag = "bazelisk",
 )
