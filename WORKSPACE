@@ -42,3 +42,9 @@ http_file(
     sha256 = "4cb534c52cdd47a6223d4596d530e7c9c785438ab3b0a49ff347e991c210b2cd",
     urls = ["https://github.com/bazelbuild/bazelisk/releases/download/v1.10.1/bazelisk-linux-amd64"],
 )
+
+http_file(
+    name = "dep_pkgs",
+    sha256 = "7695f759074d678ac8642ba6a94f2053d0b1069461dd408a4c005bd23851ba39",
+    urls = ["https://github.com/f110/bazel-container/releases/download/dep_pkgs%2F20211002/dep_pkgs.tar"],
+)

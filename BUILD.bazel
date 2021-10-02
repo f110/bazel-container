@@ -3,7 +3,7 @@ load("@io_bazel_rules_docker//docker/package_managers:download_pkgs.bzl", "downl
 load("@io_bazel_rules_docker//docker/toolchain_container:toolchain_container.bzl", "toolchain_container")
 
 download_pkgs(
-    name = "dep_debs",
+    name = "dep_pkgs",
     image_tar = "@debian11//image",
     packages = [
         "build-essential",
@@ -28,7 +28,7 @@ toolchain_container(
     name = "bazelisk",
     base = "@debian11//image",
     entrypoint = ["/usr/local/bin/bazel"],
-    installables_tar = ":dep_debs.tar",
+    installables_tar = "@dep_pkgs//file",
     tars = [
         ":bazelisk_bin",
     ],
