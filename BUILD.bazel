@@ -1,7 +1,8 @@
 load("@rules_pkg//:pkg.bzl", "pkg_tar")
 load("@io_bazel_rules_docker//docker/package_managers:download_pkgs.bzl", "download_pkgs")
 load("//toolchain_container:toolchain_container.bzl", "toolchain_container")
-load("@io_bazel_rules_docker//container:container.bzl", "container_image", "container_push")
+load("@io_bazel_rules_docker//container:container.bzl", "container_bundle", "container_image")
+load("@io_bazel_rules_docker//contrib:push-all.bzl", "container_push")
 
 download_pkgs(
     name = "dep_pkgs",
@@ -43,11 +44,29 @@ container_image(
     ],
 )
 
+load(":bazel.bzl", "bazels")
+
+bazels()
+
+IMAGES = {
+    "ghcr.io/f110/bazel-container:bazelisk": ":bazelisk",
+}
+
+load(":versions.bzl", "VERSIONS")
+
+IMAGES.update({
+    "ghcr.io/f110/bazel-container:" + x[0]: "bazel_" + x[0].replace(".", "_")
+    for x in VERSIONS
+})
+
+container_bundle(
+    name = "all",
+    images = IMAGES,
+)
+
 container_push(
     name = "publish",
+    bundle = ":all",
     format = "Docker",
-    image = ":bazelisk",
-    registry = "ghcr.io",
-    repository = "f110/bazel-container",
-    tag = "bazelisk",
+    sequential = True,
 )
