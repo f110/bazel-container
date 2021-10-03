@@ -19,6 +19,7 @@ def bazels():
             entrypoint = ["/usr/local/bin/bazel"],
             labels = {
                 "org.opencontainers.image.source": "https://github.com/f110/bazel-container",
+                "org.opencontainers.image.version": version_info[0],
             },
             tars = [
                 ":bazel_" + v + "_bin",
