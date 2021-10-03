@@ -1,7 +1,7 @@
 load("@rules_pkg//:pkg.bzl", "pkg_tar")
 load("@io_bazel_rules_docker//docker/package_managers:download_pkgs.bzl", "download_pkgs")
-load("@io_bazel_rules_docker//docker/toolchain_container:toolchain_container.bzl", "toolchain_container")
-load("@io_bazel_rules_docker//container:container.bzl", "container_push")
+load("//toolchain_container:toolchain_container.bzl", "toolchain_container")
+load("@io_bazel_rules_docker//container:container.bzl", "container_image", "container_push")
 
 download_pkgs(
     name = "dep_pkgs",
@@ -26,10 +26,15 @@ pkg_tar(
 )
 
 toolchain_container(
-    name = "bazelisk",
+    name = "base_layer",
     base = "@debian11//image",
-    entrypoint = ["/usr/local/bin/bazel"],
     installables_tar = "@dep_pkgs//file",
+)
+
+container_image(
+    name = "bazelisk",
+    base = ":base_layer",
+    entrypoint = ["/usr/local/bin/bazel"],
     labels = {
         "org.opencontainers.image.source": "https://github.com/f110/bazel-container",
     },
