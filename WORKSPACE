@@ -38,6 +38,13 @@ container_pull(
 )
 
 http_file(
+    name = "docker_gpg",
+    downloaded_file_path = "docker_gpg",
+    sha256 = "1500c1f56fa9e26b9b8f42452a553675796ade0807cdce11975eb98170b3a570",
+    urls = ["https://download.docker.com/linux/debian/gpg"],
+)
+
+http_file(
     name = "bazelisk",
     sha256 = "4cb534c52cdd47a6223d4596d530e7c9c785438ab3b0a49ff347e991c210b2cd",
     urls = ["https://github.com/bazelbuild/bazelisk/releases/download/v1.10.1/bazelisk-linux-amd64"],

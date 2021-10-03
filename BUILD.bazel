@@ -1,15 +1,39 @@
 load("@rules_pkg//:pkg.bzl", "pkg_tar")
 load("@io_bazel_rules_docker//docker/package_managers:download_pkgs.bzl", "download_pkgs")
+load("@io_bazel_rules_docker//docker/package_managers:apt_key.bzl", "add_apt_key")
 load("//toolchain_container:toolchain_container.bzl", "toolchain_container")
 load("@io_bazel_rules_docker//container:container.bzl", "container_bundle", "container_image")
 load("@io_bazel_rules_docker//contrib:push-all.bzl", "container_push")
 
+toolchain_container(
+    name = "deb-build-image",
+    base = "@debian11//image",
+    packages = [
+        "apt-transport-https",
+        "ca-certificates",
+        "curl",
+    ],
+)
+
+add_apt_key(
+    name = "deb-build-image-key",
+    image = ":deb-build-image.tar",
+    keys = [
+        "@docker_gpg//file",
+    ],
+)
+
 download_pkgs(
     name = "dep_pkgs",
-    image_tar = "@debian11//image",
+    additional_repos = [
+        "deb [arch=amd64] https://download.docker.com/linux/debian bullseye stable",
+    ],
+    image_tar = ":deb-build-image-key.tar",
     packages = [
         "build-essential",
         "ca-certificates",
+        "curl",
+        "docker-ce",
         "git",
         "libstdc++-10-dev",
         "python",
@@ -28,7 +52,7 @@ pkg_tar(
 
 toolchain_container(
     name = "base_layer",
-    base = "@debian11//image",
+    base = ":deb-build-image-key.tar",
     installables_tar = "@dep_pkgs//file",
 )
 
