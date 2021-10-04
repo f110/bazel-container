@@ -36,6 +36,11 @@ VERSIONS = [
         "https://releases.bazel.build/3.5.1/release/bazel-3.5.1-linux-x86_64",
         "12b4ab9bf6957de33ad8c809efc27254c599217a37c5a68553b53ccde43d329a",
     ),
+    (
+        "3.4.1",
+        "https://releases.bazel.build/3.4.1/release/bazel-3.4.1-linux-x86_64",
+        "1a64c807716e10c872f1618852d95f4893d81667fe6e691ef696489103c9b460",
+    ),
 ]
 
 def bazel_binaries():
