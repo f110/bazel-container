@@ -39,6 +39,7 @@ download_pkgs(
         "python",
         "python3",
         "python3-distutils",
+        "wget",
     ],
 )
 
