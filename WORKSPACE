@@ -52,8 +52,8 @@ http_file(
 
 http_file(
     name = "dep_pkgs",
-    sha256 = "14e01f959d054d0f93774d5ea7eb5e741b24aacb814958f2dff2c9a8da4290ad",
-    urls = ["https://github.com/f110/bazel-container/releases/download/dep_pkgs%2F20211004/dep_pkgs.tar"],
+    sha256 = "2d7e3843914415530c999f239e4440ef691c59a82a98df3c6d761d3029fa5c66",
+    urls = ["https://github.com/f110/bazel-container/releases/download/dep_pkgs%2F20211005/dep_pkgs.tar"],
 )
 
 load(":versions.bzl", "bazel_binaries")
