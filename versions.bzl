@@ -2,6 +2,11 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_file")
 
 VERSIONS = [
     (
+        "5.3.1",
+        "https://releases.bazel.build/5.3.1/release/bazel-5.3.1-linux-x86_64",
+        "f680a8a35789fb550c966a9a6661349af6993edd5ebf85bfb0f22e968c78115a",
+    ),
+    (
         "5.3.0",
         "https://releases.bazel.build/5.3.0/release/bazel-5.3.0-linux-x86_64",
         "3d144b890b85d95fb13df941bfd010fc3628e9afaa4c85e7d1a002e4fd02b249",
