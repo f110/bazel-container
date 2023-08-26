@@ -46,8 +46,8 @@ http_file(
 
 http_file(
     name = "bazelisk",
-    sha256 = "231ec5ca8115e94c75a1f4fbada1a062b48822ca04f21f26e4cb1cd8973cd458",
-    urls = ["https://github.com/bazelbuild/bazelisk/releases/download/v1.11.0/bazelisk-linux-amd64"],
+    sha256 = "ce52caa51ef9e509fb6b7e5ad892e5cf10feb0794b0aed4d2f36adb00a1a2779",
+    urls = ["https://github.com/bazelbuild/bazelisk/releases/download/v1.18.0/bazelisk-linux-amd64"],
 )
 
 http_file(
