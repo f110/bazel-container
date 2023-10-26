@@ -1,98 +1,42 @@
-load("@rules_pkg//:pkg.bzl", "pkg_tar")
-load("@io_bazel_rules_docker//docker/package_managers:download_pkgs.bzl", "download_pkgs")
-load("@io_bazel_rules_docker//docker/package_managers:apt_key.bzl", "add_apt_key")
-load("//toolchain_container:toolchain_container.bzl", "toolchain_container")
-load("@io_bazel_rules_docker//container:container.bzl", "container_bundle", "container_image")
-load("@io_bazel_rules_docker//contrib:push-all.bzl", "container_push")
+load("@bazel_gazelle//:def.bzl", "gazelle")
 
-toolchain_container(
-    name = "deb-build-image",
-    base = "@debian11//image",
-    packages = [
-        "apt-transport-https",
-        "ca-certificates",
-        "curl",
+gazelle(name = "gazelle")
+
+load("//private/chisel:defs.bzl", "chisel_tar")
+
+chisel_tar(
+    name = "base",
+    release = "//chisel-release:chisel.yaml",
+    slices = [
+        # Base
+        "//chisel-release/slices:base-files",
+        "//chisel-release/slices:base-passwd",
+        "//chisel-release/slices:ca-certificates",
+        "//chisel-release/slices:tzdata",
+        "//chisel-release/slices:netbase",
+        "//chisel-release/slices:libc6",
+        "//chisel-release/slices:libssl3",
+        "//chisel-release/slices:debianutils",
+        "//chisel-release/slices:grep",
+        "//chisel-release/slices:sed",
+        # Bazel dependency
+        "//chisel-release/slices:g++",
+        "//chisel-release/slices:zip",
+        "//chisel-release/slices:unzip",
+        "//chisel-release/slices:tar",
+        "//chisel-release/slices:gzip",
+        "//chisel-release/slices:patch",
+        "//chisel-release/slices:linux-libc-dev",
     ],
 )
 
-add_apt_key(
-    name = "deb-build-image-key",
-    image = ":deb-build-image.tar",
-    keys = [
-        "@docker_gpg//file",
+chisel_tar(
+    name = "debug",
+    release = "//chisel-release:chisel.yaml",
+    slices = [
+        "//chisel-release/slices:curl",
+        "//chisel-release/slices:git",
+        "//chisel-release/slices:python3.10-minimal",
+        "//chisel-release/slices:python3-distutils",
     ],
-)
-
-download_pkgs(
-    name = "dep_pkgs",
-    additional_repos = [
-        "deb [arch=amd64] https://download.docker.com/linux/debian bullseye stable",
-    ],
-    image_tar = ":deb-build-image-key.tar",
-    packages = [
-        "build-essential",
-        "ca-certificates",
-        "curl",
-        "docker-ce",
-        "git",
-        "libstdc++-10-dev",
-        "python",
-        "python3",
-        "python3-distutils",
-        "wget",
-    ],
-)
-
-pkg_tar(
-    name = "bazelisk_bin",
-    files = {
-        "@bazelisk//file": "/usr/local/bin/bazel",
-    },
-    mode = "0755",
-)
-
-toolchain_container(
-    name = "base_layer",
-    base = ":deb-build-image-key.tar",
-    installables_tar = "@dep_pkgs//file",
-)
-
-container_image(
-    name = "bazelisk",
-    base = ":base_layer",
-    entrypoint = ["/usr/local/bin/bazel"],
-    labels = {
-        "org.opencontainers.image.source": "https://github.com/f110/bazel-container",
-        "org.opencontainers.image.version": "bazelisk",
-    },
-    tars = [
-        ":bazelisk_bin",
-    ],
-)
-
-load(":bazel.bzl", "bazels")
-
-bazels()
-
-IMAGES = {
-    "ghcr.io/f110/bazel-container:bazelisk": ":bazelisk",
-}
-
-load(":versions.bzl", "VERSIONS")
-
-IMAGES.update({
-    "ghcr.io/f110/bazel-container:" + x[0]: "bazel_" + x[0].replace(".", "_")
-    for x in VERSIONS
-})
-
-container_bundle(
-    name = "all",
-    images = IMAGES,
-)
-
-container_push(
-    name = "publish",
-    bundle = ":all",
-    format = "Docker",
-    sequential = True,
 )
