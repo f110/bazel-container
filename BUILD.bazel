@@ -27,6 +27,10 @@ chisel_tar(
         "//chisel-release/slices:gzip",
         "//chisel-release/slices:patch",
         "//chisel-release/slices:linux-libc-dev",
+        "//chisel-release/slices:curl",
+        "//chisel-release/slices:git",
+        "//chisel-release/slices:python3.10-minimal",
+        "//chisel-release/slices:python3-distutils",
     ],
 )
 
@@ -34,9 +38,49 @@ chisel_tar(
     name = "debug",
     release = "//chisel-release:chisel.yaml",
     slices = [
-        "//chisel-release/slices:curl",
-        "//chisel-release/slices:git",
-        "//chisel-release/slices:python3.10-minimal",
-        "//chisel-release/slices:python3-distutils",
+        "//chisel-release/slices:bash",
+        "//chisel-release/slices:bash-posix",
+        "//chisel-release/slices:coreutils",
+        "//chisel-release/slices:strace",
     ],
+)
+
+load("@rules_pkg//:pkg.bzl", "pkg_tar")
+
+pkg_tar(
+    name = "bazelisk_bin",
+    files = {
+        "@bazelisk//file": "/usr/local/bin/bazel",
+    },
+    mode = "0755",
+)
+
+load("@rules_oci//oci:defs.bzl", "oci_image", "oci_push", "oci_tarball")
+
+oci_image(
+    name = "bazelisk",
+    architecture = "amd64",
+    entrypoint = ["/usr/local/bin/bazel"],
+    labels = {
+        "org.opencontainers.image.source": "https://github.com/f110/bazel-container",
+    },
+    os = "linux",
+    tars = [
+        ":base",
+        ":debug",
+        ":bazelisk_bin",
+    ],
+)
+
+oci_tarball(
+    name = "bazelisk.tar",
+    image = ":bazelisk",
+    repo_tags = ["bazel-container:bazelisk"],
+)
+
+oci_push(
+    name = "push",
+    image = ":bazelisk",
+    remote_tags = ["bazelisk"],
+    repository = "ghcr.io/f110/bazel-container",
 )
