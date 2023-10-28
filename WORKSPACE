@@ -1,10 +1,28 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive", "http_file")
 
 http_archive(
-    name = "io_bazel_rules_docker",
-    sha256 = "1f4e59843b61981a96835dc4ac377ad4da9f8c334ebe5e0bb3f58f80c09735f4",
-    strip_prefix = "rules_docker-0.19.0",
-    urls = ["https://github.com/bazelbuild/rules_docker/releases/download/v0.19.0/rules_docker-v0.19.0.tar.gz"],
+    name = "io_bazel_rules_go",
+    sha256 = "91585017debb61982f7054c9688857a2ad1fd823fc3f9cb05048b0025c47d023",
+    urls = [
+        "https://mirror.bazel.build/github.com/bazelbuild/rules_go/releases/download/v0.42.0/rules_go-v0.42.0.zip",
+        "https://github.com/bazelbuild/rules_go/releases/download/v0.42.0/rules_go-v0.42.0.zip",
+    ],
+)
+
+http_archive(
+    name = "bazel_gazelle",
+    sha256 = "d3fa66a39028e97d76f9e2db8f1b0c11c099e8e01bf363a923074784e451f809",
+    urls = [
+        "https://mirror.bazel.build/github.com/bazelbuild/bazel-gazelle/releases/download/v0.33.0/bazel-gazelle-v0.33.0.tar.gz",
+        "https://github.com/bazelbuild/bazel-gazelle/releases/download/v0.33.0/bazel-gazelle-v0.33.0.tar.gz",
+    ],
+)
+
+http_archive(
+    name = "rules_python",
+    sha256 = "9d04041ac92a0985e344235f5d946f71ac543f1b1565f2cdbc9a2aaee8adf55b",
+    strip_prefix = "rules_python-0.26.0",
+    url = "https://github.com/bazelbuild/rules_python/releases/download/0.26.0/rules_python-0.26.0.tar.gz",
 )
 
 http_archive(
@@ -16,26 +34,22 @@ http_archive(
     ],
 )
 
-load("@io_bazel_rules_docker//repositories:repositories.bzl", container_repositories = "repositories")
+load("@io_bazel_rules_go//go:deps.bzl", "go_register_toolchains", "go_rules_dependencies")
+load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies", "go_repository")
 
-container_repositories()
+go_rules_dependencies()
 
-load("@io_bazel_rules_docker//repositories:deps.bzl", container_deps = "deps")
+go_register_toolchains(version = "1.21.3")
 
-container_deps()
+gazelle_dependencies()
+
+load("@rules_python//python:repositories.bzl", "py_repositories")
+
+py_repositories()
 
 load("@rules_pkg//:deps.bzl", "rules_pkg_dependencies")
 
 rules_pkg_dependencies()
-
-load("@io_bazel_rules_docker//container:container.bzl", "container_pull")
-
-container_pull(
-    name = "debian11",
-    digest = "sha256:2c22645bfe97aa1ed1c930adf5970fee3454f9a42a19214051ec677cba805712",
-    registry = "index.docker.io",
-    repository = "library/debian",
-)
 
 http_file(
     name = "docker_gpg",
@@ -50,12 +64,13 @@ http_file(
     urls = ["https://github.com/bazelbuild/bazelisk/releases/download/v1.11.0/bazelisk-linux-amd64"],
 )
 
-http_file(
-    name = "dep_pkgs",
-    sha256 = "2d7e3843914415530c999f239e4440ef691c59a82a98df3c6d761d3029fa5c66",
-    urls = ["https://github.com/f110/bazel-container/releases/download/dep_pkgs%2F20211005/dep_pkgs.tar"],
+go_repository(
+    name = "com_github_canonical_chisel",
+    importpath = "github.com/canonical/chisel",
+    tag = "v0.8.0",
 )
 
-load(":versions.bzl", "bazel_binaries")
+load("//:chisel.bzl", "chisel_dependencies")
 
-bazel_binaries()
+# gazelle:repository_macro chisel.bzl%chisel_dependencies
+chisel_dependencies()
