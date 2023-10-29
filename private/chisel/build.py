@@ -39,8 +39,6 @@ def main():
                 if stat.S_ISLNK(st.st_mode):
                     info.type = tarfile.SYMTYPE
                     link = os.readlink(root + "/" + file_name)
-                    if link[0] == '/':
-                        link = link[1:]
                     info.linkname = link
                     out_file.addfile(info)
                 else:

@@ -202,6 +202,7 @@ chisel_slice(
 
 chisel_slice(
     name = "bash-posix",
+    package_name = "bash",
     src = "bash.yaml",
     slice = "posix",
     visibility = ["//visibility:public"],
@@ -235,7 +236,7 @@ chisel_slice(
 chisel_slice(
     name = "libc6",
     src = "libc6.yaml",
-    slice = "libs",
+    slice = "data",
     visibility = ["//visibility:public"],
 )
 

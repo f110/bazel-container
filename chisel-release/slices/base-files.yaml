@@ -9,6 +9,7 @@ slices:
       - base-files_home
       - base-files_root
       - base-files_lib
+      - base-files_tmp
       - base-files_release-info
       - base-files_license
 
@@ -43,6 +44,9 @@ slices:
   lib:
     contents:
       /lib/systemd/:
+  tmp:
+    contents:
+      /tmp/:
   release-info:
     essential:
       - base-files_etc

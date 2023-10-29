@@ -63,10 +63,14 @@ chisel_tar = rule(
 )
 
 def _chisel_slice_impl(ctx):
+    package_name = ctx.attr.package_name
+    if not package_name:
+        package_name = ctx.label.name
+
     return [
         DefaultInfo(files = depset(direct = [ctx.file.src], transitive = [depset(ctx.files.deps)])),
         ChiselSlice(
-            name = ctx.label.name,
+            name = package_name,
             slice = ctx.attr.slice,
             files = [ctx.file.src] + ctx.files.deps,
         ),
@@ -76,6 +80,7 @@ chisel_slice = rule(
     implementation = _chisel_slice_impl,
     attrs = {
         "src": attr.label(allow_single_file = [".yaml", ".yml"]),
+        "package_name": attr.string(),
         "slice": attr.string(mandatory = True),
         "deps": attr.label_list(providers = [ChiselSlice]),
     },
