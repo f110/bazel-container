@@ -67,6 +67,20 @@ oci_image(
     os = "linux",
     tars = [
         ":base",
+        ":bazelisk_bin",
+    ],
+)
+
+oci_image(
+    name = "bazelisk-debug",
+    architecture = "amd64",
+    entrypoint = ["/usr/local/bin/bazel"],
+    labels = {
+        "org.opencontainers.image.source": "https://github.com/f110/bazel-container",
+    },
+    os = "linux",
+    tars = [
+        ":base",
         ":debug",
         ":bazelisk_bin",
     ],
@@ -78,9 +92,22 @@ oci_tarball(
     repo_tags = ["bazel-container:bazelisk"],
 )
 
+oci_tarball(
+    name = "bazelisk-debug.tar",
+    image = ":bazelisk-debug",
+    repo_tags = ["bazel-container:bazelisk-debug"],
+)
+
 oci_push(
     name = "push",
     image = ":bazelisk",
     remote_tags = ["bazelisk"],
+    repository = "ghcr.io/f110/bazel-container",
+)
+
+oci_push(
+    name = "push-debug",
+    image = ":bazelisk-debug",
+    remote_tags = ["bazelisk-debug"],
     repository = "ghcr.io/f110/bazel-container",
 )
