@@ -14,6 +14,7 @@ slices:
       /usr/lib/python3.10/_strptime.py:
       /usr/lib/python3.10/_threading_local.py:
       /usr/lib/python3.10/_weakrefset.py:
+      /usr/lib/python3.10/_sysconfigdata__x86_64-linux-gnu.py: {arch: amd64}
       /usr/lib/python3.10/abc.py:
       /usr/lib/python3.10/argparse.py:
       /usr/lib/python3.10/ast.py:

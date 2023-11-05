@@ -32,16 +32,8 @@ chisel_tar(
         "//chisel-release/slices:git",
         "//chisel-release/slices:python3.10-minimal",
         "//chisel-release/slices:python3-distutils",
-    ],
-)
-
-chisel_tar(
-    name = "debug",
-    release = "//chisel-release:chisel.yaml",
-    slices = [
         "//chisel-release/slices:bash",
         "//chisel-release/slices:bash-posix",
-        "//chisel-release/slices:strace",
     ],
 )
 
@@ -71,43 +63,15 @@ oci_image(
     ],
 )
 
-oci_image(
-    name = "bazelisk-debug",
-    architecture = "amd64",
-    entrypoint = ["/usr/local/bin/bazel"],
-    labels = {
-        "org.opencontainers.image.source": "https://github.com/f110/bazel-container",
-    },
-    os = "linux",
-    tars = [
-        ":base",
-        ":debug",
-        ":bazelisk_bin",
-    ],
-)
-
 oci_tarball(
     name = "bazelisk.tar",
     image = ":bazelisk",
     repo_tags = ["bazel-container:bazelisk"],
 )
 
-oci_tarball(
-    name = "bazelisk-debug.tar",
-    image = ":bazelisk-debug",
-    repo_tags = ["bazel-container:bazelisk-debug"],
-)
-
 oci_push(
     name = "push",
     image = ":bazelisk",
     remote_tags = ["bazelisk"],
-    repository = "ghcr.io/f110/bazel-container",
-)
-
-oci_push(
-    name = "push-debug",
-    image = ":bazelisk-debug",
-    remote_tags = ["bazelisk-debug"],
     repository = "ghcr.io/f110/bazel-container",
 )
