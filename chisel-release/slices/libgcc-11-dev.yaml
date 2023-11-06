@@ -11,7 +11,6 @@ slices:
       - liblsan0_libs
       - libtsan0_libs
       - libubsan1_libs
-#      - libhwasan0_libs
       - libgcc-11-dev_libs
       - libgcc-11-dev_includes
 
@@ -43,23 +42,110 @@ slices:
       /usr/lib/gcc/*-linux-*/11/crtend.o:
       /usr/lib/gcc/*-linux-*/11/crtendS.o:
       /usr/lib/gcc/*-linux-*/11/crtfastmath.o:
+      /usr/lib/gcc/*-linux-*/11/crtoffloadbegin.o: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/crtoffloadend.o: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/crtoffloadtable.o: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/crtprec32.o: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/crtprec64.o: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/crtprec80.o: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/libasan_preinit.o: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/liblsan_preinit.o: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/libtsan_preinit.o: {arch: amd64}
 
   includes:
     contents:
       /usr/lib/gcc/*-linux-*/11/include/acc_prof.h:
+      /usr/lib/gcc/*-linux-*/11/include/adxintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/ammintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/amxbf16intrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/amxint8intrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/amxtileintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/avx2intrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/avx5124fmapsintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/avx5124vnniwintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/avx512bf16intrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/avx512bf16vlintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/avx512bitalgintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/avx512bwintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/avx512cdintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/avx512dqintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/avx512erintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/avx512fintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/avx512ifmaintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/avx512ifmavlintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/avx512pfintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/avx512vbmi2intrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/avx512vbmi2vlintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/avx512vbmiintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/avx512vbmivlintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/avx512vlbwintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/avx512vldqintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/avx512vlintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/avx512vnniintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/avx512vnnivlintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/avx512vp2intersectintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/avx512vp2intersectvlintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/avx512vpopcntdqintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/avx512vpopcntdqvlintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/avxintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/avxvnniintrin.h: {arch: amd64}
       /usr/lib/gcc/*-linux-*/11/include/backtrace-supported.h:
       /usr/lib/gcc/*-linux-*/11/include/backtrace.h:
+      /usr/lib/gcc/*-linux-*/11/include/bmi2intrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/bmiintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/bmmintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/cet.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/cetintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/cldemoteintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/clflushoptintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/clwbintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/clzerointrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/cpuid.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/cross-stdarg.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/emmintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/enqcmdintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/f16cintrin.h: {arch: amd64}
       /usr/lib/gcc/*-linux-*/11/include/float.h:
+      /usr/lib/gcc/*-linux-*/11/include/fma4intrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/fmaintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/fxsrintrin.h: {arch: amd64}
       /usr/lib/gcc/*-linux-*/11/include/gcov.h:
+      /usr/lib/gcc/*-linux-*/11/include/gfniintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/hresetintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/ia32intrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/immintrin.h: {arch: amd64}
       /usr/lib/gcc/*-linux-*/11/include/iso646.h:
+      /usr/lib/gcc/*-linux-*/11/include/keylockerintrin.h: {arch: amd64}
       /usr/lib/gcc/*-linux-*/11/include/limits.h:
+      /usr/lib/gcc/*-linux-*/11/include/lwpintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/lzcntintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/mm3dnow.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/mm_malloc.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/mmintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/movdirintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/mwaitintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/mwaitxintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/nmmintrin.h: {arch: amd64}
       /usr/lib/gcc/*-linux-*/11/include/omp.h:
       /usr/lib/gcc/*-linux-*/11/include/openacc.h:
+      /usr/lib/gcc/*-linux-*/11/include/pconfigintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/pkuintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/pmmintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/popcntintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/prfchwintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/quadmath.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/quadmath_weak.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/rdseedintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/rtmintrin.h: {arch: amd64}
       /usr/lib/gcc/*-linux-*/11/include/sanitizer/asan_interface.h:
       /usr/lib/gcc/*-linux-*/11/include/sanitizer/common_interface_defs.h:
       /usr/lib/gcc/*-linux-*/11/include/sanitizer/hwasan_interface.h:
       /usr/lib/gcc/*-linux-*/11/include/sanitizer/lsan_interface.h:
       /usr/lib/gcc/*-linux-*/11/include/sanitizer/tsan_interface.h:
+      /usr/lib/gcc/*-linux-*/11/include/serializeintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/sgxintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/shaintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/smmintrin.h: {arch: amd64}
       /usr/lib/gcc/*-linux-*/11/include/stdalign.h:
       /usr/lib/gcc/*-linux-*/11/include/stdarg.h:
       /usr/lib/gcc/*-linux-*/11/include/stdatomic.h:
@@ -70,5 +156,23 @@ slices:
       /usr/lib/gcc/*-linux-*/11/include/stdint.h:
       /usr/lib/gcc/*-linux-*/11/include/stdnoreturn.h:
       /usr/lib/gcc/*-linux-*/11/include/syslimits.h:
+      /usr/lib/gcc/*-linux-*/11/include/tbmintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/tmmintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/tsxldtrkintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/uintrintrin.h: {arch: amd64}
       /usr/lib/gcc/*-linux-*/11/include/unwind.h:
+      /usr/lib/gcc/*-linux-*/11/include/vaesintrin.h: {arch: amd64}
       /usr/lib/gcc/*-linux-*/11/include/varargs.h:
+      /usr/lib/gcc/*-linux-*/11/include/vpclmulqdqintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/waitpkgintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/wbnoinvdintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/wmmintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/x86gprintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/x86intrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/xmmintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/xopintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/xsavecintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/xsaveintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/xsaveoptintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/xsavesintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/11/include/xtestintrin.h: {arch: amd64}
