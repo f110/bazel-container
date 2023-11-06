@@ -16,6 +16,7 @@ chisel_tar(
         "//chisel-release/slices:netbase",
         "//chisel-release/slices:libc6",
         "//chisel-release/slices:libssl3",
+        "//chisel-release/slices:coreutils",
         "//chisel-release/slices:debianutils",
         "//chisel-release/slices:grep",
         "//chisel-release/slices:sed",
@@ -40,7 +41,6 @@ chisel_tar(
     slices = [
         "//chisel-release/slices:bash",
         "//chisel-release/slices:bash-posix",
-        "//chisel-release/slices:coreutils",
         "//chisel-release/slices:strace",
     ],
 )
