@@ -45,6 +45,7 @@ slices:
       /usr/lib/python3.10/colorsys.py:
       /usr/lib/python3.10/contextvars.py:
       /usr/lib/python3.10/crypt.py:
+      /usr/lib/python3.10/dataclasses.py:
       /usr/lib/python3.10/decimal.py:
       /usr/lib/python3.10/difflib.py:
       /usr/lib/python3.10/distutils/__init__.py:
@@ -151,7 +152,7 @@ slices:
       /usr/lib/python3.10/webbrowser.py:
       /usr/lib/python3.10/xdrlib.py:
       /usr/lib/python3.10/zipapp.py:
-      /usr/lib/python3.10/_sysconfigdata__linux_*-linux-*.py:
+      /usr/lib/python3.10/_sysconfigdata__linux_x86_64-linux-gnu.py: {arch: amd64}
       /usr/lib/python3.10/asyncio/*:
       /usr/lib/python3.10/concurrent/*:
       /usr/lib/python3.10/concurrent/futures/*:
