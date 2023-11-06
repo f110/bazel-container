@@ -70,13 +70,6 @@ oci_register_toolchains(
 )
 
 http_file(
-    name = "docker_gpg",
-    downloaded_file_path = "docker_gpg",
-    sha256 = "1500c1f56fa9e26b9b8f42452a553675796ade0807cdce11975eb98170b3a570",
-    urls = ["https://download.docker.com/linux/debian/gpg"],
-)
-
-http_file(
     name = "bazelisk",
     sha256 = "ce52caa51ef9e509fb6b7e5ad892e5cf10feb0794b0aed4d2f36adb00a1a2779",
     urls = ["https://github.com/bazelbuild/bazelisk/releases/download/v1.18.0/bazelisk-linux-amd64"],
