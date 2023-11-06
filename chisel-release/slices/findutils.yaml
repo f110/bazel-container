@@ -1,0 +1,10 @@
+package: findutils
+
+slices:
+  bin:
+    essential:
+      - libc6_libs
+      - libselinux1_libs
+    contents:
+      /usr/bin/find:
+      /usr/bin/xargs:

@@ -209,6 +209,17 @@ chisel_slice(
 )
 
 chisel_slice(
+    name = "findutils",
+    src = "findutils.yaml",
+    slice = "bin",
+    visibility = ["//visibility:public"],
+    deps = [
+        ":libc6",
+        ":libselinux1",
+    ],
+)
+
+chisel_slice(
     name = "coreutils",
     src = "coreutils.yaml",
     slice = "bin",
@@ -219,6 +230,16 @@ chisel_slice(
         ":libc6",
         ":libgmp10",
         ":libselinux1",
+    ],
+)
+
+chisel_slice(
+    name = "mawk",
+    src = "mawk.yaml",
+    slice = "bin",
+    visibility = ["//visibility:public"],
+    deps = [
+        ":libc6",
     ],
 )
 

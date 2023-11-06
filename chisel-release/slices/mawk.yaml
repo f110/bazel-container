@@ -1,0 +1,9 @@
+package: mawk
+
+slices:
+  bin:
+    essential:
+      - libc6_libs
+    contents:
+      /usr/bin/mawk:
+      /usr/bin/awk: {symlink: /usr/bin/mawk}
