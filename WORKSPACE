@@ -78,7 +78,7 @@ http_file(
 go_repository(
     name = "com_github_canonical_chisel",
     importpath = "github.com/canonical/chisel",
-    tag = "v0.8.0",
+    tag = "v0.9.0",
 )
 
 load("//:chisel.bzl", "chisel_dependencies")
