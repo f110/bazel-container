@@ -71,8 +71,8 @@ oci_register_toolchains(
 
 http_file(
     name = "bazelisk",
-    sha256 = "ce52caa51ef9e509fb6b7e5ad892e5cf10feb0794b0aed4d2f36adb00a1a2779",
-    urls = ["https://github.com/bazelbuild/bazelisk/releases/download/v1.18.0/bazelisk-linux-amd64"],
+    sha256 = "d28b588ac0916abd6bf02defb5433f6eddf7cba35ffa808eabb65a44aab226f7",
+    urls = ["https://github.com/bazelbuild/bazelisk/releases/download/v1.19.0/bazelisk-linux-amd64"],
 )
 
 go_repository(
