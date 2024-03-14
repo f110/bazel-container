@@ -36,6 +36,8 @@ chisel_tar(
         "//chisel-release/slices:python3-distutils",
         "//chisel-release/slices:bash",
         "//chisel-release/slices:bash-posix",
+        "//chisel-release/slices:automake",
+        "//chisel-release/slices:pkg-config",
     ],
 )
 

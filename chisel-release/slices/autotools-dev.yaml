@@ -1,0 +1,10 @@
+package: autotools-dev
+
+slices:
+  bin:
+    contents:
+      /usr/bin/dh_autotools-dev_restoreconfig:
+      /usr/bin/dh_autotools-dev_updateconfig:
+      /usr/share/perl5/Debian/Debhelper/Sequence/autotools_dev.pm:
+      /usr/share/misc/config.guess:
+      /usr/share/misc/config.sub:

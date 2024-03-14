@@ -1,0 +1,23 @@
+package: autoconf
+
+slices:
+  bin:
+    essential:
+      - perl_bin
+      - m4_bin
+      - debianutils_bin
+    contents:
+      /usr/bin/autoconf:
+      /usr/bin/autoheader:
+      /usr/bin/autom4te:
+      /usr/bin/autoreconf:
+      /usr/bin/autoscan:
+      /usr/bin/autoupdate:
+      /usr/bin/ifnames:
+      /usr/share/autoconf/Autom4te/*:
+      /usr/share/autoconf/autoconf/*:
+      /usr/share/autoconf/autom4te.cfg:
+      /usr/share/autoconf/autoscan/*:
+      /usr/share/autoconf/autotest/*:
+      /usr/share/autoconf/build-aux/*:
+      /usr/share/autoconf/m4sugar/*:

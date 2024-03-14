@@ -1,0 +1,9 @@
+package: m4
+
+slices:
+  bin:
+    essential:
+      - libc6_libs
+      - libsigsegv2_libs
+    contents:
+      /usr/bin/m4:

@@ -261,6 +261,29 @@ chisel_slice(
     visibility = ["//visibility:public"],
 )
 
+chisel_slice(
+    name = "automake",
+    src = "automake.yaml",
+    slice = "bin",
+    visibility = ["//visibility:public"],
+    deps = [
+        ":autoconf",
+        ":autotools-dev",
+    ],
+)
+
+chisel_slice(
+    name = "pkg-config",
+    src = "pkg-config.yaml",
+    slice = "bin",
+    visibility = ["//visibility:public"],
+    deps = [
+        ":libc6",
+        ":libdpkg-perl",
+        ":libglib2.0-0",
+    ],
+)
+
 # Deps
 
 chisel_slice(
@@ -1074,5 +1097,96 @@ chisel_slice(
     deps = [
         ":libc6",
         ":libdb5.3",
+    ],
+)
+
+chisel_slice(
+    name = "autotools-dev",
+    src = "autotools-dev.yaml",
+    slice = "bin",
+)
+
+chisel_slice(
+    name = "autoconf",
+    src = "autoconf.yaml",
+    slice = "bin",
+    deps = [
+        ":debianutils",
+        ":m4",
+        ":perl",
+    ],
+)
+
+chisel_slice(
+    name = "m4",
+    src = "m4.yaml",
+    slice = "bin",
+    deps = [
+        ":libc6",
+        ":libsigsegv2",
+    ],
+)
+
+chisel_slice(
+    name = "libsigsegv2",
+    src = "libsigsegv2.yaml",
+    slice = "libs",
+    deps = [":libc6"],
+)
+
+chisel_slice(
+    name = "libglib2.0-0",
+    src = "libglib2.0-0.yaml",
+    slice = "libs",
+    deps = [
+        ":libc6",
+        ":libffi8",
+        ":libmount1",
+        ":libpcre3",
+        ":libselinux1",
+        ":zlib1g",
+    ],
+)
+
+chisel_slice(
+    name = "libmount1",
+    src = "libmount1.yaml",
+    slice = "libs",
+    deps = [
+        ":libblkid1",
+        ":libc6",
+        ":libselinux1",
+    ],
+)
+
+chisel_slice(
+    name = "libblkid1",
+    src = "libblkid1.yaml",
+    slice = "libs",
+    deps = [":libc6"],
+)
+
+chisel_slice(
+    name = "libdpkg-perl",
+    src = "libdpkg-perl.yaml",
+    slice = "libs",
+    deps = [
+        ":dpkg",
+        ":perl",
+    ],
+)
+
+chisel_slice(
+    name = "dpkg",
+    src = "dpkg.yaml",
+    slice = "bin",
+    deps = [
+        ":libbz2-1.0",
+        ":libc6",
+        ":liblzma5",
+        ":libselinux1",
+        ":libzstd1",
+        ":tar",
+        ":zlib1g",
     ],
 )
