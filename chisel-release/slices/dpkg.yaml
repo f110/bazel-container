@@ -1,0 +1,25 @@
+package: dpkg
+
+slices:
+  bin:
+    essential:
+      - libc6_libs
+      - libbz2-1.0_libs
+      - liblzma5_libs
+      - libselinux1_libs
+      - libzstd1_libs
+      - zlib1g_libs
+      - tar_bin
+    contents:
+      /sbin/start-stop-daemon:
+      /usr/bin/dpkg:
+      /usr/bin/dpkg-deb:
+      /usr/bin/dpkg-divert:
+      /usr/bin/dpkg-maintscript-helper:
+      /usr/bin/dpkg-query:
+      /usr/bin/dpkg-realpath:
+      /usr/bin/dpkg-split:
+      /usr/bin/dpkg-statoverride:
+      /usr/bin/dpkg-trigger:
+      /usr/bin/update-alternatives:
+      /usr/libexec/dpkg/dpkg-db-backup:
