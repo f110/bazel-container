@@ -41,23 +41,26 @@ slices:
       /usr/lib/*-linux-*/gcrt1.o:
       /usr/lib/*-linux-*/grcrt1.o:
       /usr/lib/*-linux-*/rcrt1.o:
+      /usr/lib/*-linux-*/libBrokenLocale.a:
       /usr/lib/*-linux-*/libanl.a:
       /usr/lib/*-linux-*/libc.a:
-      /usr/lib/*-linux-*/libBrokenLocale.a:
       /usr/lib/*-linux-*/libc_nonshared.a:
       /usr/lib/*-linux-*/libdl.a:
       /usr/lib/*-linux-*/libg.a:
+      /usr/lib/*-linux-*/libm-2.35.a:
       /usr/lib/*-linux-*/libm.a:
       /usr/lib/*-linux-*/libmcheck.a:
+      /usr/lib/*-linux-*/libmvec.a:
       /usr/lib/*-linux-*/libpthread.a:
       /usr/lib/*-linux-*/libresolv.a:
       /usr/lib/*-linux-*/librt.a:
       /usr/lib/*-linux-*/libutil.a:
       /usr/lib/*-linux-*/libc.so:
+      /usr/lib/*-linux-*/libm.so:
       /usr/lib/*-linux-*/libBrokenLocale.so:
       /usr/lib/*-linux-*/libanl.so:
       /usr/lib/*-linux-*/libc_malloc_debug.so:
-      /usr/lib/*-linux-*/libm.so:
+      /usr/lib/*-linux-*/libmvec.so:
       /usr/lib/*-linux-*/libnss_compat.so:
       /usr/lib/*-linux-*/libnss_hesiod.so:
       /usr/lib/*-linux-*/libresolv.so:
