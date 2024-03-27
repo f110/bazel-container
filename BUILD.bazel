@@ -79,3 +79,89 @@ oci_push(
     remote_tags = ["bazelisk"],
     repository = "ghcr.io/f110/bazel-container",
 )
+
+load("//private/deb:deb_pkg.bzl", "deb_pkg")
+load("@rules_distroless//distroless:defs.bzl", "cacerts", "passwd")
+
+cacerts(
+    name = "cacerts",
+    package = "@debian12_ca-certificates//:data",
+)
+
+passwd(
+    name = "passwd",
+    entries = [
+        {
+            "gecos": ["root"],
+            "gid": 0,
+            "shell": "/sbin/nologin",
+            "home": "/root",
+            "uid": 0,
+            "password": "x",
+            "username": "root",
+        },
+    ],
+)
+
+pkg_tar(
+    name = "base-debian",
+    mode = "0755",
+    deps = deb_pkg(
+        "debian12",
+        "base-files",
+        "base-passwd",
+        "tzdata",
+        "netbase",
+        "libc6",
+        "libssl3",
+        "coreutils",
+        "debianutils",
+        "grep",
+        "sed",
+        "findutils",
+        "mawk",
+        "g++",
+        "zip",
+        "unzip",
+        "tar",
+        "gzip",
+        "patch",
+        "linux-libc-dev",
+        "curl",
+        "git",
+        "python3.11-minimal",
+        "python3-distutils",
+        "bash",
+        "automake",
+        "pkg-config",
+    ),
+)
+
+oci_image(
+    name = "bazelisk-debian",
+    architecture = "amd64",
+    entrypoint = ["/usr/local/bin/bazel"],
+    labels = {
+        "org.opencontainers.image.source": "https://github.com/f110/bazel-container",
+    },
+    os = "linux",
+    tars = [
+        ":base-debian",
+        ":passwd",
+        ":cacerts",
+        ":bazelisk_bin",
+    ],
+)
+
+oci_tarball(
+    name = "bazelisk-debian.tar",
+    image = ":bazelisk-debian",
+    repo_tags = ["bazel-container:bazelisk-debian"],
+)
+
+oci_push(
+    name = "push-debian",
+    image = ":bazelisk-debian",
+    remote_tags = ["bazelisk-debian12"],
+    repository = "ghcr.io/f110/bazel-container",
+)

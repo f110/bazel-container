@@ -1,0 +1,32 @@
+snapshot:
+  distro:
+    bookworm:
+      debian: 20240327T025446Z
+packages:
+  - base-files
+  - base-passwd
+  - ca-certificates
+  - tzdata
+  - netbase
+  - libc6
+  - libssl3
+  - coreutils
+  - debianutils
+  - grep
+  - sed
+  - findutils
+  - mawk
+  - g++
+  - zip
+  - unzip
+  - tar
+  - gzip
+  - patch
+  - linux-libc-dev
+  - curl
+  - git
+  - python3.11-minimal
+  - python3-distutils
+  - bash
+  - automake
+  - pkg-config
