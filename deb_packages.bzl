@@ -100,6 +100,13 @@ def debian_packages():
     )
 
     deb_pkg(
+        name = "debian12_dash",
+        package_name = "dash",
+        sha256 = "33ea40061da2f1a861ec46212b2b6a34f0776a049b1a3f0abce2fb8cb994258f",
+        urls = ["https://snapshot.debian.org/archive/debian/20240327T025446Z/pool/main/d/dash/dash_0.5.12-2_amd64.deb"],
+    )
+
+    deb_pkg(
         name = "debian12_debconf",
         package_name = "debconf",
         sha256 = "74ab14194a3762b2fc717917dcfda42929ab98e3c59295a063344dc551cd7cc8",
@@ -520,6 +527,13 @@ def debian_packages():
     )
 
     deb_pkg(
+        name = "debian12_libncursesw6",
+        package_name = "libncursesw6",
+        sha256 = "98fa7a53dc565a38b65fb70422ad08001bf5361d8fbc74255280c329996a6bec",
+        urls = ["https://snapshot.debian.org/archive/debian/20240327T025446Z/pool/main/n/ncurses/libncursesw6_6.4-4_amd64.deb"],
+    )
+
+    deb_pkg(
         name = "debian12_libnettle8",
         package_name = "libnettle8",
         sha256 = "45922e6e289ffd92f0f92d2bb9159e84236ff202d552a461bf10e5335b3f0261",
@@ -590,10 +604,24 @@ def debian_packages():
     )
 
     deb_pkg(
+        name = "debian12_libpython3.11-stdlib",
+        package_name = "libpython3.11-stdlib",
+        sha256 = "67eec0eb4df58b93e1bf97c402c2cbeb361bf9c5af44fa3a02ff1c723c791ca2",
+        urls = ["https://snapshot.debian.org/archive/debian/20240327T025446Z/pool/main/p/python3.11/libpython3.11-stdlib_3.11.2-6_amd64.deb"],
+    )
+
+    deb_pkg(
         name = "debian12_libquadmath0",
         package_name = "libquadmath0",
         sha256 = "4e21728bbb1f170f35a5d60fe26adadb48c436f1b5fd977454e632668074169c",
         urls = ["https://snapshot.debian.org/archive/debian/20240327T025446Z/pool/main/g/gcc-12/libquadmath0_12.2.0-14_amd64.deb"],
+    )
+
+    deb_pkg(
+        name = "debian12_libreadline8",
+        package_name = "libreadline8",
+        sha256 = "e02ebbd3701cf468dbf98d6d917fbe0325e881f07fe8b316150c8d2a64486e66",
+        urls = ["https://snapshot.debian.org/archive/debian/20240327T025446Z/pool/main/r/readline/libreadline8_8.2-1.3_amd64.deb"],
     )
 
     deb_pkg(
@@ -622,6 +650,13 @@ def debian_packages():
         package_name = "libselinux1",
         sha256 = "2b07f5287b9105f40158b56e4d70cc1652dac56a408f3507b4ab3d061eed425f",
         urls = ["https://snapshot.debian.org/archive/debian/20240327T025446Z/pool/main/libs/libselinux/libselinux1_3.4-1+b6_amd64.deb"],
+    )
+
+    deb_pkg(
+        name = "debian12_libsqlite3-0",
+        package_name = "libsqlite3-0",
+        sha256 = "a8b11a1664a998cc2499fb04327d1f6c4e8f77b78ea8b6f8418d96fc54e3731f",
+        urls = ["https://snapshot.debian.org/archive/debian/20240327T025446Z/pool/main/s/sqlite3/libsqlite3-0_3.40.1-2_amd64.deb"],
     )
 
     deb_pkg(
@@ -709,6 +744,13 @@ def debian_packages():
     )
 
     deb_pkg(
+        name = "debian12_libuuid1",
+        package_name = "libuuid1",
+        sha256 = "c2b3ccade855de14c6ece893a0d2bec63b0a007cbc2970af8152cf06699ccd2a",
+        urls = ["https://snapshot.debian.org/archive/debian/20240327T025446Z/pool/main/u/util-linux/libuuid1_2.38.1-5+b1_amd64.deb"],
+    )
+
+    deb_pkg(
         name = "debian12_libzstd1",
         package_name = "libzstd1",
         sha256 = "6315b5ac38b724a710fb96bf1042019398cb656718b1522279a5185ed39318fa",
@@ -734,6 +776,13 @@ def debian_packages():
         package_name = "mawk",
         sha256 = "bcbc83f391854ea9d50ce2a4101aacf330de3b8b71d81a798faadba14a157f78",
         urls = ["https://snapshot.debian.org/archive/debian/20240327T025446Z/pool/main/m/mawk/mawk_1.3.4.20200120-3.1_amd64.deb"],
+    )
+
+    deb_pkg(
+        name = "debian12_media-types",
+        package_name = "media-types",
+        sha256 = "aaa46dcb3b39948ae2e0fdb72cfcb2f48c0b59f19785a3da8045c05eb19955dd",
+        urls = ["https://snapshot.debian.org/archive/debian/20240327T025446Z/pool/main/m/media-types/media-types_10.0.0_all.deb"],
     )
 
     deb_pkg(
@@ -814,10 +863,24 @@ def debian_packages():
     )
 
     deb_pkg(
+        name = "debian12_python3-minimal",
+        package_name = "python3-minimal",
+        sha256 = "30f9618670e686d781afbfc713eb0830c29d2819e9cb2a0488800dad6bb99faa",
+        urls = ["https://snapshot.debian.org/archive/debian/20240327T025446Z/pool/main/p/python3-defaults/python3-minimal_3.11.2-1+b1_amd64.deb"],
+    )
+
+    deb_pkg(
         name = "debian12_python3.11-minimal",
         package_name = "python3.11-minimal",
         sha256 = "a72247ba64bcd1d0ace2ea8eefd7bcfaca84204def9495269526c25dd9fddc0c",
         urls = ["https://snapshot.debian.org/archive/debian/20240327T025446Z/pool/main/p/python3.11/python3.11-minimal_3.11.2-6_amd64.deb"],
+    )
+
+    deb_pkg(
+        name = "debian12_readline-common",
+        package_name = "readline-common",
+        sha256 = "69317523fe56429aa361545416ad339d138c1500e5a604856a80dd9074b4e35c",
+        urls = ["https://snapshot.debian.org/archive/debian/20240327T025446Z/pool/main/r/readline/readline-common_8.2-1.3_all.deb"],
     )
 
     deb_pkg(
