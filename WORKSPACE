@@ -41,8 +41,19 @@ http_archive(
     url = "https://github.com/bazel-contrib/rules_oci/releases/download/v1.7.4/rules_oci-v1.7.4.tar.gz",
 )
 
+http_archive(
+    name = "rules_distroless",
+    sha256 = "9306b5b8a296d95745d7b38be20c320db125f1b5f6fc3ad507de21c8d562b159",
+    strip_prefix = "rules_distroless-896a27f8aee503c6ea3eeae47b51a4fc84c8496a",
+    url = "https://github.com/GoogleContainerTools/rules_distroless/archive/896a27f8aee503c6ea3eeae47b51a4fc84c8496a.tar.gz",
+)
+
 load("@io_bazel_rules_go//go:deps.bzl", "go_register_toolchains", "go_rules_dependencies")
 load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies", "go_repository")
+load("//:deps.bzl", "go_dependencies")
+
+# gazelle:repository_macro deps.bzl%go_dependencies
+go_dependencies()
 
 go_rules_dependencies()
 
@@ -57,6 +68,14 @@ py_repositories()
 load("@rules_pkg//:deps.bzl", "rules_pkg_dependencies")
 
 rules_pkg_dependencies()
+
+load("@rules_distroless//distroless:dependencies.bzl", "distroless_dependencies")
+
+distroless_dependencies()
+
+load("@rules_distroless//distroless:toolchains.bzl", "distroless_register_toolchains")
+
+distroless_register_toolchains()
 
 load("@rules_oci//oci:dependencies.bzl", "rules_oci_dependencies")
 
@@ -85,3 +104,7 @@ load("//:chisel.bzl", "chisel_dependencies")
 
 # gazelle:repository_macro chisel.bzl%chisel_dependencies
 chisel_dependencies()
+
+load("//:deb_packages.bzl", deb_package_dependencies = "debian_packages")
+
+deb_package_dependencies()
