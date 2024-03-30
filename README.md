@@ -14,6 +14,6 @@ Feel free to use it in your workflow and the patch is welcome!
 
 This container is built with chisel based on Ubuntu.
 
-## ghcr.io/f110/bazel-container:bazelisk-debian
+## ghcr.io/f110/bazel-container:bazelisk-debian12
 
 This container is based on Debian12.
