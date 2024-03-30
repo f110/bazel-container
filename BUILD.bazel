@@ -82,6 +82,7 @@ oci_push(
 
 load("//private/deb:deb_pkg.bzl", "deb_pkg")
 load("@rules_distroless//distroless:defs.bzl", "cacerts", "passwd")
+load("@rules_pkg//pkg:mappings.bzl", "pkg_filegroup", "pkg_mklink")
 
 cacerts(
     name = "cacerts",
@@ -101,6 +102,59 @@ passwd(
             "username": "root",
         },
     ],
+)
+
+pkg_mklink(
+    name = "which_link",
+    link_name = "usr/bin/which",
+    target = "/usr/bin/which.debianutils",
+)
+
+pkg_mklink(
+    name = "aclocal_link",
+    link_name = "usr/bin/aclocal",
+    target = "/usr/bin/aclocal-1.16",
+)
+
+pkg_mklink(
+    name = "automake_link",
+    link_name = "usr/bin/automake",
+    target = "/usr/bin/automake-1.16",
+)
+
+pkg_mklink(
+    name = "awk_link",
+    link_name = "usr/bin/awk",
+    target = "/usr/bin/mawk",
+)
+
+pkg_mklink(
+    name = "nawk_link",
+    link_name = "usr/bin/nawk",
+    target = "/usr/bin/mawk",
+)
+
+pkg_mklink(
+    name = "pager_link",
+    link_name = "usr/bin/pager",
+    target = "/bin/more",
+)
+
+pkg_filegroup(
+    name = "links-debian",
+    srcs = [
+        ":aclocal_link",
+        ":automake_link",
+        ":awk_link",
+        ":nawk_link",
+        ":pager_link",
+        ":which_link",
+    ],
+)
+
+pkg_tar(
+    name = "alternatives-link",
+    srcs = [":links-debian"],
 )
 
 pkg_tar(
@@ -149,6 +203,7 @@ oci_image(
     os = "linux",
     tars = [
         ":base-debian",
+        ":alternatives-link",
         ":passwd",
         ":cacerts",
         ":bazelisk_bin",
