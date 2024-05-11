@@ -1,7 +1,7 @@
 snapshot:
   distro:
     bookworm:
-      debian: 20240327T025446Z
+      debian: 20240510T205852Z
 packages:
   - base-files
   - base-passwd
