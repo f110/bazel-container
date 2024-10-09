@@ -1,0 +1,9 @@
+package: pkgconf-bin
+
+slices:
+  bin:
+    essential:
+      - libc6_libs
+      - libpkgconf3_libs
+    contents:
+      /usr/bin/pkgconf:

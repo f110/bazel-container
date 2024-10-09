@@ -6,10 +6,10 @@ slices:
       - libc6_libs
       - libtinfo6_libs
     contents:
-      /bin/bash:
+      /usr/bin/bash:
       /usr/bin/clear_console:
   posix:
     essential:
       - bash_bin
     contents:
-      /bin/sh: {symlink: /bin/bash}
+      /bin/sh: {symlink: /usr/bin/bash}

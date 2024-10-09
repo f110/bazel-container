@@ -1,4 +1,4 @@
-package: cpp-11
+package: cpp-13-x86-64-linux-gnu
 
 slices:
   bin:
@@ -11,6 +11,5 @@ slices:
       - libzstd1_libs
       - zlib1g_libs
     contents:
-      /usr/bin/cpp-11:
-      /usr/bin/x86_64-linux-gnu-cpp-11: {arch: amd64}
-      /usr/lib/gcc/*-linux-*/11/cc1:
+      /usr/bin/x86_64-linux-gnu-cpp-13:
+      /usr/libexec/gcc/x86_64-linux-gnu/13/cc1:

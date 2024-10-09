@@ -1,0 +1,9 @@
+package: g++-13
+
+slices:
+  bin:
+    essential:
+      - g++-13-x86-64-linux-gnu_bin
+      - gcc-13_bin
+    contents:
+      /usr/bin/g++-13:

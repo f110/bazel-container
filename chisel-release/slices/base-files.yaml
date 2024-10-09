@@ -8,8 +8,8 @@ slices:
       - base-files_var
       - base-files_home
       - base-files_root
-      - base-files_lib
       - base-files_tmp
+      - base-files_lib64
       - base-files_release-info
       - base-files_license
 
@@ -19,6 +19,7 @@ slices:
   usr:
     contents:
       /usr/lib/:
+      /usr/lib64/:
       /usr/share/:
       /usr/include/:
       /usr/bin/:
@@ -41,12 +42,12 @@ slices:
   root:
     contents:
       /root/:
-  lib:
-    contents:
-      /lib/systemd/:
   tmp:
     contents:
       /tmp/:
+  lib64:
+    contents:
+      /lib64/: {symlink: /usr/lib64}
   release-info:
     essential:
       - base-files_etc

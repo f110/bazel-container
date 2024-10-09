@@ -1,0 +1,8 @@
+package: cpp-13
+
+slices:
+  bin:
+    essential:
+      - cpp-13-x86-64-linux-gnu_bin
+    contents:
+      /usr/bin/cpp-13:

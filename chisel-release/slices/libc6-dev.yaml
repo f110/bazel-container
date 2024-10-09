@@ -15,7 +15,7 @@ slices:
       /usr/include/*-linux-*/sys/*.h:
       /usr/include/*.h:
       /usr/include/arpa/*.h:
-      /usr/include/finclude/math-vector-fortran.h:
+      /usr/include/finclude/*-linux-*/math-vector-fortran.h:
       /usr/include/net/*.h:
       /usr/include/netash/ash.h:
       /usr/include/netatalk/at.h:
@@ -47,7 +47,7 @@ slices:
       /usr/lib/*-linux-*/libc_nonshared.a:
       /usr/lib/*-linux-*/libdl.a:
       /usr/lib/*-linux-*/libg.a:
-      /usr/lib/*-linux-*/libm-2.35.a:
+      /usr/lib/*-linux-*/libm-2.39.a:
       /usr/lib/*-linux-*/libm.a:
       /usr/lib/*-linux-*/libmcheck.a:
       /usr/lib/*-linux-*/libmvec.a:

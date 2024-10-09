@@ -1,0 +1,178 @@
+package: libgcc-13-dev
+
+slices:
+  devel:
+    essential:
+      - libgcc-s1_libs
+      - libgomp1_libs
+      - libitm1_libs
+      - libatomic1_libs
+      - libasan6_libs
+      - liblsan0_libs
+      - libtsan0_libs
+      - libubsan1_libs
+      - libgcc-13-dev_libs
+      - libgcc-13-dev_includes
+
+  libs:
+    contents:
+      /usr/lib/gcc/*-linux-*/13/libasan.a:
+      /usr/lib/gcc/*-linux-*/13/libatomic.a:
+      /usr/lib/gcc/*-linux-*/13/libbacktrace.a:
+      /usr/lib/gcc/*-linux-*/13/libgcc.a:
+      /usr/lib/gcc/*-linux-*/13/libgcc_eh.a:
+      /usr/lib/gcc/*-linux-*/13/libgcov.a:
+      /usr/lib/gcc/*-linux-*/13/libgomp.a:
+      /usr/lib/gcc/*-linux-*/13/libitm.a:
+      /usr/lib/gcc/*-linux-*/13/liblsan.a:
+      /usr/lib/gcc/*-linux-*/13/libssp_nonshared.a:
+      /usr/lib/gcc/*-linux-*/13/libtsan.a:
+      /usr/lib/gcc/*-linux-*/13/libubsan.a:
+      /usr/lib/gcc/*-linux-*/13/libgcc_s.so:
+      /usr/lib/gcc/*-linux-*/13/libasan.so:
+      /usr/lib/gcc/*-linux-*/13/libatomic.so:
+      /usr/lib/gcc/*-linux-*/13/libgomp.so:
+      /usr/lib/gcc/*-linux-*/13/libitm.so:
+      /usr/lib/gcc/*-linux-*/13/liblsan.so:
+      /usr/lib/gcc/*-linux-*/13/libtsan.so:
+      /usr/lib/gcc/*-linux-*/13/libubsan.so:
+      /usr/lib/gcc/*-linux-*/13/crtbegin.o:
+      /usr/lib/gcc/*-linux-*/13/crtbeginS.o:
+      /usr/lib/gcc/*-linux-*/13/crtbeginT.o:
+      /usr/lib/gcc/*-linux-*/13/crtend.o:
+      /usr/lib/gcc/*-linux-*/13/crtendS.o:
+      /usr/lib/gcc/*-linux-*/13/crtfastmath.o:
+      /usr/lib/gcc/*-linux-*/13/crtoffloadbegin.o: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/crtoffloadend.o: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/crtoffloadtable.o: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/crtprec32.o: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/crtprec64.o: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/crtprec80.o: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/libasan_preinit.o: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/liblsan_preinit.o: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/libtsan_preinit.o: {arch: amd64}
+
+  includes:
+    contents:
+      /usr/lib/gcc/*-linux-*/13/include/acc_prof.h:
+      /usr/lib/gcc/*-linux-*/13/include/adxintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/ammintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/amxbf16intrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/amxint8intrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/amxtileintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/avx2intrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/avx5124fmapsintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/avx5124vnniwintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/avx512bf16intrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/avx512bf16vlintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/avx512bitalgintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/avx512bwintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/avx512cdintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/avx512dqintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/avx512erintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/avx512fintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/avx512ifmaintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/avx512ifmavlintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/avx512pfintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/avx512vbmi2intrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/avx512vbmi2vlintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/avx512vbmiintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/avx512vbmivlintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/avx512vlbwintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/avx512vldqintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/avx512vlintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/avx512vnniintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/avx512vnnivlintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/avx512vp2intersectintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/avx512vp2intersectvlintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/avx512vpopcntdqintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/avx512vpopcntdqvlintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/avxintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/avxvnniintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/backtrace-supported.h:
+      /usr/lib/gcc/*-linux-*/13/include/backtrace.h:
+      /usr/lib/gcc/*-linux-*/13/include/bmi2intrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/bmiintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/bmmintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/cet.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/cetintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/cldemoteintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/clflushoptintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/clwbintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/clzerointrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/cpuid.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/cross-stdarg.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/emmintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/enqcmdintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/f16cintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/float.h:
+      /usr/lib/gcc/*-linux-*/13/include/fma4intrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/fmaintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/fxsrintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/gcov.h:
+      /usr/lib/gcc/*-linux-*/13/include/gfniintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/hresetintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/ia32intrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/immintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/iso646.h:
+      /usr/lib/gcc/*-linux-*/13/include/keylockerintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/limits.h:
+      /usr/lib/gcc/*-linux-*/13/include/lwpintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/lzcntintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/mm3dnow.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/mm_malloc.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/mmintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/movdirintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/mwaitintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/mwaitxintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/nmmintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/omp.h:
+      /usr/lib/gcc/*-linux-*/13/include/openacc.h:
+      /usr/lib/gcc/*-linux-*/13/include/pconfigintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/pkuintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/pmmintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/popcntintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/prfchwintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/quadmath.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/quadmath_weak.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/rdseedintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/rtmintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/sanitizer/asan_interface.h:
+      /usr/lib/gcc/*-linux-*/13/include/sanitizer/common_interface_defs.h:
+      /usr/lib/gcc/*-linux-*/13/include/sanitizer/hwasan_interface.h:
+      /usr/lib/gcc/*-linux-*/13/include/sanitizer/lsan_interface.h:
+      /usr/lib/gcc/*-linux-*/13/include/sanitizer/tsan_interface.h:
+      /usr/lib/gcc/*-linux-*/13/include/serializeintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/sgxintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/shaintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/smmintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/stdalign.h:
+      /usr/lib/gcc/*-linux-*/13/include/stdarg.h:
+      /usr/lib/gcc/*-linux-*/13/include/stdatomic.h:
+      /usr/lib/gcc/*-linux-*/13/include/stdbool.h:
+      /usr/lib/gcc/*-linux-*/13/include/stddef.h:
+      /usr/lib/gcc/*-linux-*/13/include/stdfix.h:
+      /usr/lib/gcc/*-linux-*/13/include/stdint-gcc.h:
+      /usr/lib/gcc/*-linux-*/13/include/stdint.h:
+      /usr/lib/gcc/*-linux-*/13/include/stdnoreturn.h:
+      /usr/lib/gcc/*-linux-*/13/include/syslimits.h:
+      /usr/lib/gcc/*-linux-*/13/include/tbmintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/tmmintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/tsxldtrkintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/uintrintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/unwind.h:
+      /usr/lib/gcc/*-linux-*/13/include/vaesintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/varargs.h:
+      /usr/lib/gcc/*-linux-*/13/include/vpclmulqdqintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/waitpkgintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/wbnoinvdintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/wmmintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/x86gprintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/x86intrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/xmmintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/xopintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/xsavecintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/xsaveintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/xsaveoptintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/xsavesintrin.h: {arch: amd64}
+      /usr/lib/gcc/*-linux-*/13/include/xtestintrin.h: {arch: amd64}

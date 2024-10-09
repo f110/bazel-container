@@ -5,7 +5,7 @@ slices:
     essential:
       - cpp_bin
       - gcc_bin
-      - g++-11_bin
-      - gcc-11_bin
+      - g++-13_bin
+      - gcc-13_bin
     contents:
       /usr/bin/g++:

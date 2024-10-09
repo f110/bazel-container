@@ -1,9 +1,9 @@
-package: libgdbm-compat4
+package: libgdbm-compat4t64
 
 slices:
   libs:
     essential:
       - libc6_libs
-      - libgdbm6_libs
+      - libgdbm6t64_libs
     contents:
       /usr/lib/*-linux-*/libgdbm_compat.so.4*:

@@ -1,0 +1,14 @@
+package: python3.12-minimal
+
+slices:
+  bin:
+    essential:
+      - libc6_libs
+      - libpython3.12-minimal_libs
+      - libpython3.12-stdlib_libs
+      - libexpat1_libs
+      - zlib1g_libs
+    contents:
+      /usr/bin/python3.12:
+      /usr/bin/python3: {symlink: /usr/bin/python3.12}
+      /usr/bin/python: {symlink: /usr/bin/python3.12}

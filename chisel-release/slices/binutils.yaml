@@ -1,0 +1,19 @@
+package: binutils
+
+slices:
+  bin:
+    essential:
+      - libbinutils_libs
+      - binutils-x86-64-linux-gnu_bin
+    contents:
+      /usr/lib/*-linux-*/gprofng/libgp-collectorAPI.a:
+      /usr/bin/gold:
+      /usr/bin/gp-archive:
+      /usr/bin/gp-collect-app:
+      /usr/bin/gp-display-html:
+      /usr/bin/gp-display-src:
+      /usr/bin/gp-display-text:
+      /usr/bin/gprofng:
+      /usr/bin/ld:
+      /usr/lib/compat-ld/ld:
+      /usr/lib/gold-ld/ld:

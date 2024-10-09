@@ -77,6 +77,16 @@ chisel_slice(
 )
 
 chisel_slice(
+    name = "binutils",
+    src = "binutils.yaml",
+    slice = "bin",
+    deps = [
+        "//chisel-release/slices:binutils-x86-64-linux-gnu",
+        "//chisel-release/slices:libbinutils",
+    ],
+)
+
+chisel_slice(
     name = "ca-certificates",
     src = "ca-certificates.yaml",
     slice = "data",
@@ -98,8 +108,8 @@ chisel_slice(
 )
 
 chisel_slice(
-    name = "cpp-11",
-    src = "cpp-11.yaml",
+    name = "cpp-13-x86-64-linux-gnu",
+    src = "cpp-13-x86-64-linux-gnu.yaml",
     slice = "bin",
     deps = [
         "//chisel-release/slices:libc6",
@@ -113,10 +123,17 @@ chisel_slice(
 )
 
 chisel_slice(
+    name = "cpp-13",
+    src = "cpp-13.yaml",
+    slice = "bin",
+    deps = ["//chisel-release/slices:cpp-13-x86-64-linux-gnu"],
+)
+
+chisel_slice(
     name = "cpp",
     src = "cpp.yaml",
     slice = "bin",
-    deps = ["//chisel-release/slices:cpp-11"],
+    deps = ["//chisel-release/slices:cpp-13"],
 )
 
 chisel_slice(
@@ -126,7 +143,7 @@ chisel_slice(
     visibility = ["//visibility:public"],
     deps = [
         "//chisel-release/slices:libc6",
-        "//chisel-release/slices:libcurl4",
+        "//chisel-release/slices:libcurl4t64",
         "//chisel-release/slices:zlib1g",
     ],
 )
@@ -135,7 +152,6 @@ chisel_slice(
     name = "debianutils",
     src = "debianutils.yaml",
     slice = "bin",
-    visibility = ["//visibility:public"],
     deps = ["//chisel-release/slices:libc6"],
 )
 
@@ -191,19 +207,29 @@ chisel_slice(
 )
 
 chisel_slice(
-    name = "g++-11",
-    src = "g++-11.yaml",
+    name = "g++-13-x86-64-linux-gnu",
+    src = "g++-13-x86-64-linux-gnu.yaml",
     slice = "bin",
     deps = [
-        "//chisel-release/slices:gcc-11",
+        "//chisel-release/slices:gcc-13-x86-64-linux-gnu",
         "//chisel-release/slices:libc6",
         "//chisel-release/slices:libgmp10",
         "//chisel-release/slices:libisl23",
         "//chisel-release/slices:libmpc3",
         "//chisel-release/slices:libmpfr6",
-        "//chisel-release/slices:libstdc++-11-dev",
+        "//chisel-release/slices:libstdc++-13-dev",
         "//chisel-release/slices:libzstd1",
         "//chisel-release/slices:zlib1g",
+    ],
+)
+
+chisel_slice(
+    name = "g++-13",
+    src = "g++-13.yaml",
+    slice = "bin",
+    deps = [
+        "//chisel-release/slices:g++-13-x86-64-linux-gnu",
+        "//chisel-release/slices:gcc-13",
     ],
 )
 
@@ -214,22 +240,22 @@ chisel_slice(
     visibility = ["//visibility:public"],
     deps = [
         "//chisel-release/slices:cpp",
-        "//chisel-release/slices:g++-11",
+        "//chisel-release/slices:g++-13",
         "//chisel-release/slices:gcc",
-        "//chisel-release/slices:gcc-11",
+        "//chisel-release/slices:gcc-13",
     ],
 )
 
 chisel_slice(
-    name = "gcc-11",
-    src = "gcc-11.yaml",
+    name = "gcc-13-x86-64-linux-gnu",
+    src = "gcc-13-x86-64-linux-gnu.yaml",
     slice = "bin",
     deps = [
         "//chisel-release/slices:binutils-x86-64-linux-gnu",
-        "//chisel-release/slices:cpp-11",
+        "//chisel-release/slices:cpp-13-x86-64-linux-gnu",
         "//chisel-release/slices:libc6",
         "//chisel-release/slices:libcc1-0",
-        "//chisel-release/slices:libgcc-11-dev",
+        "//chisel-release/slices:libgcc-13-dev",
         "//chisel-release/slices:libgcc-s1",
         "//chisel-release/slices:libgmp10",
         "//chisel-release/slices:libisl23",
@@ -242,12 +268,22 @@ chisel_slice(
 )
 
 chisel_slice(
+    name = "gcc-13",
+    src = "gcc-13.yaml",
+    slice = "bin",
+    deps = [
+        "//chisel-release/slices:binutils",
+        "//chisel-release/slices:gcc-13-x86-64-linux-gnu",
+    ],
+)
+
+chisel_slice(
     name = "gcc",
     src = "gcc.yaml",
     slice = "bin",
     deps = [
         "//chisel-release/slices:cpp",
-        "//chisel-release/slices:gcc-11",
+        "//chisel-release/slices:gcc-13",
     ],
 )
 
@@ -258,7 +294,7 @@ chisel_slice(
     visibility = ["//visibility:public"],
     deps = [
         "//chisel-release/slices:libc6",
-        "//chisel-release/slices:libcurl3-gnutls",
+        "//chisel-release/slices:libcurl3t64-gnutls",
         "//chisel-release/slices:liberror-perl",
         "//chisel-release/slices:libexpat1",
         "//chisel-release/slices:libpcre2-8-0",
@@ -358,7 +394,6 @@ chisel_slice(
     name = "libc6",
     src = "libc6.yaml",
     slice = "libs",
-    visibility = ["//visibility:public"],
 )
 
 chisel_slice(
@@ -408,19 +443,19 @@ chisel_slice(
 )
 
 chisel_slice(
-    name = "libcurl3-gnutls",
-    src = "libcurl3-gnutls.yaml",
+    name = "libcurl3t64-gnutls",
+    src = "libcurl3t64-gnutls.yaml",
     slice = "libs",
     deps = [
         "//chisel-release/slices:libbrotli1",
         "//chisel-release/slices:libc6",
-        "//chisel-release/slices:libgnutls30",
+        "//chisel-release/slices:libgnutls30t64",
         "//chisel-release/slices:libgssapi-krb5-2",
         "//chisel-release/slices:libidn2-0",
-        "//chisel-release/slices:libldap-2.5-0",
-        "//chisel-release/slices:libnettle8",
+        "//chisel-release/slices:libldap2",
+        "//chisel-release/slices:libnettle8t64",
         "//chisel-release/slices:libnghttp2-14",
-        "//chisel-release/slices:libpsl5",
+        "//chisel-release/slices:libpsl5t64",
         "//chisel-release/slices:librtmp1",
         "//chisel-release/slices:libssh-4",
         "//chisel-release/slices:libzstd1",
@@ -429,28 +464,28 @@ chisel_slice(
 )
 
 chisel_slice(
-    name = "libcurl4",
-    src = "libcurl4.yaml",
+    name = "libcurl4t64",
+    src = "libcurl4t64.yaml",
     slice = "libs",
     deps = [
         "//chisel-release/slices:libbrotli1",
         "//chisel-release/slices:libc6",
         "//chisel-release/slices:libgssapi-krb5-2",
         "//chisel-release/slices:libidn2-0",
-        "//chisel-release/slices:libldap-2.5-0",
+        "//chisel-release/slices:libldap2",
         "//chisel-release/slices:libnghttp2-14",
-        "//chisel-release/slices:libpsl5",
+        "//chisel-release/slices:libpsl5t64",
         "//chisel-release/slices:librtmp1",
         "//chisel-release/slices:libssh-4",
-        "//chisel-release/slices:libssl3",
+        "//chisel-release/slices:libssl3t64",
         "//chisel-release/slices:libzstd1",
         "//chisel-release/slices:zlib1g",
     ],
 )
 
 chisel_slice(
-    name = "libdb5.3",
-    src = "libdb5.3.yaml",
+    name = "libdb5.3t64",
+    src = "libdb5.3t64.yaml",
     slice = "libs",
     deps = ["//chisel-release/slices:libc6"],
 )
@@ -459,6 +494,7 @@ chisel_slice(
     name = "libdpkg-perl",
     src = "libdpkg-perl.yaml",
     slice = "libs",
+    visibility = ["//visibility:public"],
     deps = [
         "//chisel-release/slices:dpkg",
         "//chisel-release/slices:perl",
@@ -486,8 +522,8 @@ chisel_slice(
 )
 
 chisel_slice(
-    name = "libgcc-11-dev",
-    src = "libgcc-11-dev.yaml",
+    name = "libgcc-13-dev",
+    src = "libgcc-13-dev.yaml",
     slice = "devel",
     deps = [
         "//chisel-release/slices:libasan6",
@@ -509,26 +545,27 @@ chisel_slice(
 )
 
 chisel_slice(
-    name = "libgdbm-compat4",
-    src = "libgdbm-compat4.yaml",
+    name = "libgdbm-compat4t64",
+    src = "libgdbm-compat4t64.yaml",
     slice = "libs",
     deps = [
         "//chisel-release/slices:libc6",
-        "//chisel-release/slices:libgdbm6",
+        "//chisel-release/slices:libgdbm6t64",
     ],
 )
 
 chisel_slice(
-    name = "libgdbm6",
-    src = "libgdbm6.yaml",
+    name = "libgdbm6t64",
+    src = "libgdbm6t64.yaml",
     slice = "libs",
     deps = ["//chisel-release/slices:libc6"],
 )
 
 chisel_slice(
-    name = "libglib2.0-0",
-    src = "libglib2.0-0.yaml",
+    name = "libglib2.0-0t64",
+    src = "libglib2.0-0t64.yaml",
     slice = "libs",
+    visibility = ["//visibility:public"],
     deps = [
         "//chisel-release/slices:libc6",
         "//chisel-release/slices:libffi8",
@@ -547,18 +584,18 @@ chisel_slice(
 )
 
 chisel_slice(
-    name = "libgnutls30",
-    src = "libgnutls30.yaml",
+    name = "libgnutls30t64",
+    src = "libgnutls30t64.yaml",
     slice = "libs",
     deps = [
         "//chisel-release/slices:libc6",
         "//chisel-release/slices:libgmp10",
-        "//chisel-release/slices:libhogweed6",
+        "//chisel-release/slices:libhogweed6t64",
         "//chisel-release/slices:libidn2-0",
-        "//chisel-release/slices:libnettle8",
+        "//chisel-release/slices:libnettle8t64",
         "//chisel-release/slices:libp11-kit0",
         "//chisel-release/slices:libtasn1-6",
-        "//chisel-release/slices:libunistring2",
+        "//chisel-release/slices:libunistring5",
     ],
 )
 
@@ -583,13 +620,13 @@ chisel_slice(
 )
 
 chisel_slice(
-    name = "libhogweed6",
-    src = "libhogweed6.yaml",
+    name = "libhogweed6t64",
+    src = "libhogweed6t64.yaml",
     slice = "libs",
     deps = [
         "//chisel-release/slices:libc6",
         "//chisel-release/slices:libgmp10",
-        "//chisel-release/slices:libnettle8",
+        "//chisel-release/slices:libnettle8t64",
     ],
 )
 
@@ -610,7 +647,7 @@ chisel_slice(
     slice = "libs",
     deps = [
         "//chisel-release/slices:libc6",
-        "//chisel-release/slices:libunistring2",
+        "//chisel-release/slices:libunistring5",
     ],
 )
 
@@ -658,7 +695,7 @@ chisel_slice(
         "//chisel-release/slices:libk5crypto3",
         "//chisel-release/slices:libkeyutils1",
         "//chisel-release/slices:libkrb5support0",
-        "//chisel-release/slices:libssl3",
+        "//chisel-release/slices:libssl3t64",
     ],
 )
 
@@ -670,12 +707,12 @@ chisel_slice(
 )
 
 chisel_slice(
-    name = "libldap-2.5-0",
-    src = "libldap-2.5-0.yaml",
+    name = "libldap2",
+    src = "libldap2.yaml",
     slice = "libs",
     deps = [
         "//chisel-release/slices:libc6",
-        "//chisel-release/slices:libgnutls30",
+        "//chisel-release/slices:libgnutls30t64",
         "//chisel-release/slices:libsasl2-2",
     ],
 )
@@ -720,17 +757,6 @@ chisel_slice(
 )
 
 chisel_slice(
-    name = "libmpdec3",
-    src = "libmpdec3.yaml",
-    slice = "libs",
-    deps = [
-        "//chisel-release/slices:libc6",
-        "//chisel-release/slices:libgcc-s1",
-        "//chisel-release/slices:libstdc++6",
-    ],
-)
-
-chisel_slice(
     name = "libmpfr6",
     src = "libmpfr6.yaml",
     slice = "libs",
@@ -751,8 +777,8 @@ chisel_slice(
 )
 
 chisel_slice(
-    name = "libnettle8",
-    src = "libnettle8.yaml",
+    name = "libnettle8t64",
+    src = "libnettle8t64.yaml",
     slice = "libs",
     deps = ["//chisel-release/slices:libc6"],
 )
@@ -762,16 +788,6 @@ chisel_slice(
     src = "libnghttp2-14.yaml",
     slice = "libs",
     deps = ["//chisel-release/slices:libc6"],
-)
-
-chisel_slice(
-    name = "libnsl2",
-    src = "libnsl2.yaml",
-    slice = "libs",
-    deps = [
-        "//chisel-release/slices:libc6",
-        "//chisel-release/slices:libtirpc3",
-    ],
 )
 
 chisel_slice(
@@ -799,69 +815,71 @@ chisel_slice(
 )
 
 chisel_slice(
-    name = "libperl5.34",
-    src = "libperl5.34.yaml",
+    name = "libperl5.38t64",
+    src = "libperl5.38t64.yaml",
     slice = "libs",
     deps = [
         "//chisel-release/slices:libbz2-1.0",
         "//chisel-release/slices:libc6",
         "//chisel-release/slices:libcrypt1",
-        "//chisel-release/slices:libdb5.3",
-        "//chisel-release/slices:libgdbm-compat4",
-        "//chisel-release/slices:libgdbm6",
-        "//chisel-release/slices:perl-modules-5.34",
+        "//chisel-release/slices:libdb5.3t64",
+        "//chisel-release/slices:libgdbm-compat4t64",
+        "//chisel-release/slices:libgdbm6t64",
+        "//chisel-release/slices:perl-modules-5.38",
         "//chisel-release/slices:zlib1g",
     ],
 )
 
 chisel_slice(
-    name = "libpsl5",
-    src = "libpsl5.yaml",
+    name = "libpkgconf3",
+    src = "libpkgconf3.yaml",
+    slice = "libs",
+    deps = ["//chisel-release/slices:libc6"],
+)
+
+chisel_slice(
+    name = "libpsl5t64",
+    src = "libpsl5t64.yaml",
     slice = "libs",
     deps = [
         "//chisel-release/slices:libc6",
         "//chisel-release/slices:libidn2-0",
-        "//chisel-release/slices:libunistring2",
+        "//chisel-release/slices:libunistring5",
     ],
 )
 
 chisel_slice(
-    name = "libpython3.10-minimal",
-    src = "libpython3.10-minimal.yaml",
+    name = "libpython3.12-minimal",
+    src = "libpython3.12-minimal.yaml",
     slice = "libs",
-    visibility = ["//visibility:public"],
     deps = [
         "//chisel-release/slices:libc6",
-        "//chisel-release/slices:libssl3",
+        "//chisel-release/slices:libssl3t64",
     ],
 )
 
 chisel_slice(
-    name = "libpython3.10-stdlib",
-    src = "libpython3.10-stdlib.yaml",
+    name = "libpython3.12-stdlib",
+    src = "libpython3.12-stdlib.yaml",
     slice = "libs",
     deps = [
         "//chisel-release/slices:libbz2-1.0",
         "//chisel-release/slices:libc6",
         "//chisel-release/slices:libcrypt1",
-        "//chisel-release/slices:libdb5.3",
+        "//chisel-release/slices:libdb5.3t64",
         "//chisel-release/slices:libffi8",
         "//chisel-release/slices:liblzma5",
-        "//chisel-release/slices:libmpdec3",
         "//chisel-release/slices:libncursesw6",
-        "//chisel-release/slices:libnsl2",
-        "//chisel-release/slices:libpython3.10-minimal",
-        "//chisel-release/slices:libreadline8",
+        "//chisel-release/slices:libpython3.12-minimal",
+        "//chisel-release/slices:libreadline8t64",
         "//chisel-release/slices:libsqlite3-0",
         "//chisel-release/slices:libtinfo6",
-        "//chisel-release/slices:libtirpc3",
-        "//chisel-release/slices:libuuid1",
     ],
 )
 
 chisel_slice(
-    name = "libreadline8",
-    src = "libreadline8.yaml",
+    name = "libreadline8t64",
+    src = "libreadline8t64.yaml",
     slice = "libs",
     deps = [
         "//chisel-release/slices:libc6",
@@ -876,9 +894,9 @@ chisel_slice(
     deps = [
         "//chisel-release/slices:libc6",
         "//chisel-release/slices:libgmp10",
-        "//chisel-release/slices:libgnutls30",
-        "//chisel-release/slices:libhogweed6",
-        "//chisel-release/slices:libnettle8",
+        "//chisel-release/slices:libgnutls30t64",
+        "//chisel-release/slices:libhogweed6t64",
+        "//chisel-release/slices:libnettle8t64",
         "//chisel-release/slices:zlib1g",
     ],
 )
@@ -899,7 +917,7 @@ chisel_slice(
     slice = "libs",
     deps = [
         "//chisel-release/slices:libc6",
-        "//chisel-release/slices:libdb5.3",
+        "//chisel-release/slices:libdb5.3t64",
     ],
 )
 
@@ -934,28 +952,16 @@ chisel_slice(
     deps = [
         "//chisel-release/slices:libc6",
         "//chisel-release/slices:libgssapi-krb5-2",
-        "//chisel-release/slices:libssl3",
+        "//chisel-release/slices:libssl3t64",
         "//chisel-release/slices:zlib1g",
     ],
 )
 
 chisel_slice(
-    name = "libssl3",
-    src = "libssl3.yaml",
+    name = "libssl3t64",
+    src = "libssl3t64.yaml",
     slice = "libs",
-    visibility = ["//visibility:public"],
     deps = ["//chisel-release/slices:libc6"],
-)
-
-chisel_slice(
-    name = "libstdc++-11-dev",
-    src = "libstdc++-11-dev.yaml",
-    slice = "devel",
-    deps = [
-        "//chisel-release/slices:libc6-dev",
-        "//chisel-release/slices:libgcc-11-dev",
-        "//chisel-release/slices:libstdc++6",
-    ],
 )
 
 chisel_slice(
@@ -983,16 +989,6 @@ chisel_slice(
 )
 
 chisel_slice(
-    name = "libtirpc3",
-    src = "libtirpc3.yaml",
-    slice = "libs",
-    deps = [
-        "//chisel-release/slices:libc6",
-        "//chisel-release/slices:libgssapi-krb5-2",
-    ],
-)
-
-chisel_slice(
     name = "libtsan0",
     src = "libtsan0.yaml",
     slice = "libs",
@@ -1014,8 +1010,8 @@ chisel_slice(
 )
 
 chisel_slice(
-    name = "libunistring2",
-    src = "libunistring2.yaml",
+    name = "libunistring5",
+    src = "libunistring5.yaml",
     slice = "libs",
     deps = ["//chisel-release/slices:libc6"],
 )
@@ -1028,13 +1024,6 @@ chisel_slice(
         "//chisel-release/slices:libc6",
         "//chisel-release/slices:liblzma5",
     ],
-)
-
-chisel_slice(
-    name = "libuuid1",
-    src = "libuuid1.yaml",
-    slice = "libs",
-    deps = ["//chisel-release/slices:libc6"],
 )
 
 chisel_slice(
@@ -1073,7 +1062,6 @@ chisel_slice(
     name = "netbase",
     src = "netbase.yaml",
     slice = "etc",
-    visibility = ["//visibility:public"],
 )
 
 chisel_slice(
@@ -1095,8 +1083,8 @@ chisel_slice(
 )
 
 chisel_slice(
-    name = "perl-modules-5.34",
-    src = "perl-modules-5.34.yaml",
+    name = "perl-modules-5.38",
+    src = "perl-modules-5.38.yaml",
     slice = "modules",
     deps = ["//chisel-release/slices:perl-base"],
 )
@@ -1106,23 +1094,29 @@ chisel_slice(
     src = "perl.yaml",
     slice = "bin",
     deps = [
-        "//chisel-release/slices:libperl5.34",
+        "//chisel-release/slices:libperl5.38t64",
         "//chisel-release/slices:netbase",
         "//chisel-release/slices:perl-base",
-        "//chisel-release/slices:perl-modules-5.34",
+        "//chisel-release/slices:perl-modules-5.38",
     ],
 )
 
 chisel_slice(
-    name = "pkg-config",
-    src = "pkg-config.yaml",
+    name = "pkgconf-bin",
+    src = "pkgconf-bin.yaml",
     slice = "bin",
-    visibility = ["//visibility:public"],
     deps = [
         "//chisel-release/slices:libc6",
-        "//chisel-release/slices:libdpkg-perl",
-        "//chisel-release/slices:libglib2.0-0",
+        "//chisel-release/slices:libpkgconf3",
     ],
+)
+
+chisel_slice(
+    name = "pkgconf",
+    src = "pkgconf.yaml",
+    slice = "bin",
+    visibility = ["//visibility:public"],
+    deps = ["//chisel-release/slices:pkgconf-bin"],
 )
 
 chisel_slice(
@@ -1131,7 +1125,7 @@ chisel_slice(
     slice = "libs",
     visibility = ["//visibility:public"],
     deps = [
-        "//chisel-release/slices:python3.10-minimal",
+        "//chisel-release/slices:python3.12-minimal",
         "//chisel-release/slices:python3-lib2to3",
     ],
 )
@@ -1143,15 +1137,14 @@ chisel_slice(
 )
 
 chisel_slice(
-    name = "python3.10-minimal",
-    src = "python3.10-minimal.yaml",
+    name = "python3.12-minimal",
+    src = "python3.12-minimal.yaml",
     slice = "bin",
-    visibility = ["//visibility:public"],
     deps = [
         "//chisel-release/slices:libc6",
         "//chisel-release/slices:libexpat1",
-        "//chisel-release/slices:libpython3.10-minimal",
-        "//chisel-release/slices:libpython3.10-stdlib",
+        "//chisel-release/slices:libpython3.12-minimal",
+        "//chisel-release/slices:libpython3.12-stdlib",
         "//chisel-release/slices:zlib1g",
     ],
 )
@@ -1183,7 +1176,6 @@ chisel_slice(
     name = "tar",
     src = "tar.yaml",
     slice = "bin",
-    visibility = ["//visibility:public"],
     deps = [
         "//chisel-release/slices:libacl1",
         "//chisel-release/slices:libc6",

@@ -1,8 +1,8 @@
-package: libnettle8
+package: libpkgconf3
 
 slices:
   libs:
     essential:
       - libc6_libs
     contents:
-      /usr/lib/*-linux-*/libnettle.so.8*:
+      /usr/lib/*-linux-*/libpkgconf.so.3*:

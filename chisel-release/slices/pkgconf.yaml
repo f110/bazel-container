@@ -1,0 +1,11 @@
+package: pkgconf
+
+slices:
+  bin:
+    essential:
+      - pkgconf-bin_bin
+    contents:
+      /usr/bin/pkg-config:
+      /usr/bin/*-linux-*-pkg-config:
+      /usr/bin/*-linux-*-pkgconf:
+      /usr/share/aclocal/pkg.m4:

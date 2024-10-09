@@ -1,0 +1,18 @@
+package: g++-13-x86-64-linux-gnu
+
+slices:
+  bin:
+    essential:
+      - gcc-13-x86-64-linux-gnu_bin
+      - libstdc++-13-dev_libs
+      - libc6_libs
+      - libgmp10_libs
+      - libisl23_libs
+      - libmpc3_libs
+      - libmpfr6_libs
+      - libzstd1_libs
+      - zlib1g_libs
+    contents:
+      /usr/bin/x86_64-linux-gnu-g++-13:
+      /usr/libexec/gcc/x86_64-linux-gnu/13/cc1plus:
+      /usr/libexec/gcc/x86_64-linux-gnu/13/g++-mapper-server:

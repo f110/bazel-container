@@ -4,7 +4,7 @@ slices:
   bin:
     essential:
       - cpp_bin
-      - gcc-11_bin
+      - gcc-13_bin
     contents:
       /usr/bin/gcc:
       /usr/bin/gcc-ar:

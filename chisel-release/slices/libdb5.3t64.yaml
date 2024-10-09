@@ -1,8 +1,8 @@
-package: libgdbm6
+package: libdb5.3t64
 
 slices:
   libs:
     essential:
       - libc6_libs
     contents:
-      /usr/lib/*-linux-*/libgdbm.so.6*:
+      /usr/lib/*-linux-*/libdb-5.3.so:

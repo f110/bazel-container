@@ -1,0 +1,16 @@
+package: gcc-13
+
+slices:
+  bin:
+    essential:
+      - gcc-13-x86-64-linux-gnu_bin
+      - binutils_bin
+    contents:
+      /usr/bin/gcc-13:
+      /usr/bin/gcc-ar-13:
+      /usr/bin/gcc-nm-13:
+      /usr/bin/gcc-ranlib-13:
+      /usr/bin/gcov-13:
+      /usr/bin/gcov-dump-13:
+      /usr/bin/gcov-tool-13:
+      /usr/bin/lto-dump-13:

@@ -4,8 +4,8 @@ slices:
   bin:
     essential:
       - perl-base_base
-      - perl-modules-5.34_modules
-      - libperl5.34_libs
+      - perl-modules-5.38_modules
+      - libperl5.38t64_libs
       - netbase_etc
     contents:
       /etc/perl/Net/*:

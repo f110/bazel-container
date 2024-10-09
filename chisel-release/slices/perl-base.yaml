@@ -7,7 +7,7 @@ slices:
       - libcrypt1_libs
     contents:
       /usr/bin/perl:
-      /usr/bin/perl5.34.0:
+      /usr/bin/perl5.38.2:
       /usr/lib/*-linux-*/perl-base/AutoLoader.pm:
       /usr/lib/*-linux-*/perl-base/Carp/Heavy.pm:
       /usr/lib/*-linux-*/perl-base/Carp.pm:
@@ -87,10 +87,8 @@ slices:
       /usr/lib/*-linux-*/perl-base/unicore/To/Bpb.pl:
       /usr/lib/*-linux-*/perl-base/unicore/To/Bpt.pl:
       /usr/lib/*-linux-*/perl-base/unicore/To/Cf.pl:
-      /usr/lib/*-linux-*/perl-base/unicore/To/Digit.pl:
       /usr/lib/*-linux-*/perl-base/unicore/To/Ea.pl:
       /usr/lib/*-linux-*/perl-base/unicore/To/EqUIdeo.pl:
-      /usr/lib/*-linux-*/perl-base/unicore/To/Fold.pl:
       /usr/lib/*-linux-*/perl-base/unicore/To/GCB.pl:
       /usr/lib/*-linux-*/perl-base/unicore/To/Gc.pl:
       /usr/lib/*-linux-*/perl-base/unicore/To/Hst.pl:
@@ -103,7 +101,6 @@ slices:
       /usr/lib/*-linux-*/perl-base/unicore/To/Jt.pl:
       /usr/lib/*-linux-*/perl-base/unicore/To/Lb.pl:
       /usr/lib/*-linux-*/perl-base/unicore/To/Lc.pl:
-      /usr/lib/*-linux-*/perl-base/unicore/To/Lower.pl:
       /usr/lib/*-linux-*/perl-base/unicore/To/NFCQC.pl:
       /usr/lib/*-linux-*/perl-base/unicore/To/NFDQC.pl:
       /usr/lib/*-linux-*/perl-base/unicore/To/NFKCCF.pl:
@@ -118,9 +115,7 @@ slices:
       /usr/lib/*-linux-*/perl-base/unicore/To/Sc.pl:
       /usr/lib/*-linux-*/perl-base/unicore/To/Scx.pl:
       /usr/lib/*-linux-*/perl-base/unicore/To/Tc.pl:
-      /usr/lib/*-linux-*/perl-base/unicore/To/Title.pl:
       /usr/lib/*-linux-*/perl-base/unicore/To/Uc.pl:
-      /usr/lib/*-linux-*/perl-base/unicore/To/Upper.pl:
       /usr/lib/*-linux-*/perl-base/unicore/To/Vo.pl:
       /usr/lib/*-linux-*/perl-base/unicore/To/WB.pl:
       /usr/lib/*-linux-*/perl-base/unicore/To/_PerlLB.pl:

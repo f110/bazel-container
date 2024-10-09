@@ -7,12 +7,14 @@ slices:
       - dpkg_bin
     contents:
       /usr/share/perl5/Dpkg/Arch.pm:
-      /usr/share/perl5/Dpkg/Build/Env.pm:
       /usr/share/perl5/Dpkg/Build/Info.pm:
-      /usr/share/perl5/Dpkg/Build/Types.pm:
+      /usr/share/perl5/Dpkg/BuildAPI.pm:
+      /usr/share/perl5/Dpkg/BuildEnv.pm:
       /usr/share/perl5/Dpkg/BuildFlags.pm:
+      /usr/share/perl5/Dpkg/BuildInfo.pm:
       /usr/share/perl5/Dpkg/BuildOptions.pm:
       /usr/share/perl5/Dpkg/BuildProfiles.pm:
+      /usr/share/perl5/Dpkg/BuildTypes.pm:
       /usr/share/perl5/Dpkg/Changelog/Debian.pm:
       /usr/share/perl5/Dpkg/Changelog/Entry/Debian.pm:
       /usr/share/perl5/Dpkg/Changelog/Entry.pm:
@@ -73,9 +75,9 @@ slices:
       /usr/share/perl5/Dpkg/Source/Patch.pm:
       /usr/share/perl5/Dpkg/Source/Quilt.pm:
       /usr/share/perl5/Dpkg/Substvars.pm:
-      /usr/share/perl5/Dpkg/Vars.pm:
       /usr/share/perl5/Dpkg/Vendor/Debian.pm:
       /usr/share/perl5/Dpkg/Vendor/Default.pm:
+      /usr/share/perl5/Dpkg/Vendor/Devuan.pm:
       /usr/share/perl5/Dpkg/Vendor/Ubuntu.pm:
       /usr/share/perl5/Dpkg/Vendor.pm:
       /usr/share/perl5/Dpkg/Version.pm:

@@ -6,6 +6,6 @@ slices:
       - libc6_libs
       - libpcre3_libs
     contents:
-      /bin/egrep:
-      /bin/fgrep:
-      /bin/grep:
+      /usr/bin/egrep:
+      /usr/bin/fgrep:
+      /usr/bin/grep:

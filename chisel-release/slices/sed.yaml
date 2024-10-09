@@ -7,4 +7,4 @@ slices:
       - libc6_libs
       - libselinux1_libs
     contents:
-      /bin/sed:
+      /usr/bin/sed:
