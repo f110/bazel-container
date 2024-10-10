@@ -1,14 +1,14 @@
 package: libc6
 
 slices:
-  data:
+  libs:
     essential:
       - libc6_config
-      - libc6_libs
+      - libc6_so
   config:
     contents:
       /etc/ld.so.conf.d/*-linux-*.conf:
-  libs:
+  so:
     contents:
       /lib/*-linux-*/ld*.so.*:
       /lib/*-linux-*/libBrokenLocale.so.*:

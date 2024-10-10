@@ -257,7 +257,7 @@ chisel_slice(
 chisel_slice(
     name = "libc6",
     src = "libc6.yaml",
-    slice = "data",
+    slice = "libs",
     visibility = ["//visibility:public"],
 )
 
