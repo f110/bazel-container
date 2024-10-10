@@ -96,6 +96,7 @@ http_file(
 
 go_repository(
     name = "com_github_canonical_chisel",
+    build_file_generation = "on",
     importpath = "github.com/canonical/chisel",
     tag = "v0.10.0",
 )

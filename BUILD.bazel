@@ -1,6 +1,14 @@
-load("@bazel_gazelle//:def.bzl", "gazelle")
+load("@bazel_gazelle//:def.bzl", "DEFAULT_LANGUAGES", "gazelle", "gazelle_binary")
 
-gazelle(name = "gazelle")
+gazelle_binary(
+    name = "egazelle",
+    languages = DEFAULT_LANGUAGES + ["//language"],
+)
+
+gazelle(
+    name = "gazelle",
+    gazelle = ":egazelle",
+)
 
 load("//private/chisel:defs.bzl", "chisel_tar")
 
