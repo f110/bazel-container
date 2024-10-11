@@ -4,11 +4,11 @@ slices:
   libs:
     essential:
       - libc6_config
-      - libc6_so
+      - libc6_files
   config:
     contents:
       /etc/ld.so.conf.d/*-linux-*.conf:
-  so:
+  files:
     contents:
       /lib/*-linux-*/ld*.so.*:
       /lib/*-linux-*/libBrokenLocale.so.*:

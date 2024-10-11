@@ -146,8 +146,9 @@ func (c *Chisel) GenerateRules(args language.GenerateArgs) language.GenerateResu
 				}
 			} else {
 				publicRule = true
-				if len(p.Slices) > 1 {
+				if len(p.Slices) > 1 && len(p.IntegrationSlices) == 0 {
 					name = fmt.Sprintf("%s_%s", p.Package, sliceName)
+					packageName = p.Package
 				}
 			}
 			if len(p.IntegrationSlices) > 0 {
