@@ -9,5 +9,7 @@ slices:
       /bin/bash:
       /usr/bin/clear_console:
   posix:
+    essential:
+      - bash_bin
     contents:
       /bin/sh: {symlink: /bin/bash}
