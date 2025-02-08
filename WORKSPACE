@@ -57,7 +57,7 @@ go_dependencies()
 
 go_rules_dependencies()
 
-go_register_toolchains(version = "1.22.3")
+go_register_toolchains(version = "1.23.6")
 
 gazelle_dependencies()
 
@@ -90,8 +90,8 @@ oci_register_toolchains(
 
 http_file(
     name = "bazelisk",
-    sha256 = "a110a613ac57081482348b9fa1719ede1fc9bb45a010f82f15eaeb1e9b657e29",
-    urls = ["https://github.com/bazelbuild/bazelisk/releases/download/v1.22.0/bazelisk-linux-amd64"],
+    sha256 = "fd8fdff418a1758887520fa42da7e6ae39aefc788cf5e7f7bb8db6934d279fc4",
+    urls = ["https://github.com/bazelbuild/bazelisk/releases/download/v1.25.0/bazelisk-linux-amd64"],
 )
 
 go_repository(
