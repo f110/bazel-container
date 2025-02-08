@@ -84,7 +84,10 @@ oci_tarball(
 oci_push(
     name = "push",
     image = ":bazelisk",
-    remote_tags = ["bazelisk"],
+    remote_tags = [
+        "bazelisk",
+        "bazelisk-v1.25.0",
+    ],
     repository = "ghcr.io/f110/bazel-container",
 )
 
@@ -227,6 +230,9 @@ oci_tarball(
 oci_push(
     name = "push-debian",
     image = ":bazelisk-debian",
-    remote_tags = ["bazelisk-debian12"],
+    remote_tags = [
+        "bazelisk-debian12",
+        "bazelisk-v1.25.0-debian12",
+    ],
     repository = "ghcr.io/f110/bazel-container",
 )
