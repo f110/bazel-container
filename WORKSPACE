@@ -94,18 +94,6 @@ http_file(
     urls = ["https://github.com/bazelbuild/bazelisk/releases/download/v1.25.0/bazelisk-linux-amd64"],
 )
 
-go_repository(
-    name = "com_github_canonical_chisel",
-    build_file_generation = "on",
-    importpath = "github.com/canonical/chisel",
-    tag = "v1.1.0",
-)
-
-load("//:chisel.bzl", "chisel_dependencies")
-
-# gazelle:repository_macro chisel.bzl%chisel_dependencies
-chisel_dependencies()
-
 load("//:deb_packages.bzl", deb_package_dependencies = "debian_packages")
 
 deb_package_dependencies()
