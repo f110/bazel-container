@@ -1,55 +1,11 @@
 load("@bazel_gazelle//:def.bzl", "DEFAULT_LANGUAGES", "gazelle", "gazelle_binary")
-
-gazelle_binary(
-    name = "egazelle",
-    languages = DEFAULT_LANGUAGES + ["//language"],
-)
-
-gazelle(
-    name = "gazelle",
-    gazelle = ":egazelle",
-)
-
-load("//private/chisel:defs.bzl", "chisel_tar")
-
-chisel_tar(
-    name = "base",
-    release = "//chisel-release:chisel.yaml",
-    slices = [
-        # Base
-        "//chisel-release/slices:base-files",
-        "//chisel-release/slices:base-passwd",
-        "//chisel-release/slices:ca-certificates",
-        "//chisel-release/slices:tzdata",
-        "//chisel-release/slices:netbase",
-        "//chisel-release/slices:libc6",
-        "//chisel-release/slices:libssl3",
-        "//chisel-release/slices:coreutils",
-        "//chisel-release/slices:debianutils",
-        "//chisel-release/slices:grep",
-        "//chisel-release/slices:sed",
-        "//chisel-release/slices:findutils",
-        "//chisel-release/slices:mawk",
-        # Bazel dependency
-        "//chisel-release/slices:g++",
-        "//chisel-release/slices:zip",
-        "//chisel-release/slices:unzip",
-        "//chisel-release/slices:tar",
-        "//chisel-release/slices:gzip",
-        "//chisel-release/slices:patch",
-        "//chisel-release/slices:linux-libc-dev",
-        "//chisel-release/slices:curl",
-        "//chisel-release/slices:git",
-        "//chisel-release/slices:python3.10-minimal",
-        "//chisel-release/slices:python3-distutils",
-        "//chisel-release/slices:bash_bin",
-        "//chisel-release/slices:bash_posix",
-        "//chisel-release/slices:automake",
-        "//chisel-release/slices:pkg-config",
-    ],
-)
-
 load("@rules_pkg//:pkg.bzl", "pkg_tar")
+load("@rules_oci//oci:defs.bzl", "oci_image", "oci_push", "oci_tarball")
+load("//private/deb:deb_pkg.bzl", "deb_pkg")
+load("@rules_distroless//distroless:defs.bzl", "cacerts", "passwd")
+load("@rules_pkg//pkg:mappings.bzl", "pkg_filegroup", "pkg_mklink")
+
+gazelle(name = "gazelle")
 
 pkg_tar(
     name = "bazelisk_bin",
@@ -58,42 +14,6 @@ pkg_tar(
     },
     mode = "0755",
 )
-
-load("@rules_oci//oci:defs.bzl", "oci_image", "oci_push", "oci_tarball")
-
-oci_image(
-    name = "bazelisk",
-    architecture = "amd64",
-    entrypoint = ["/usr/local/bin/bazel"],
-    labels = {
-        "org.opencontainers.image.source": "https://github.com/f110/bazel-container",
-    },
-    os = "linux",
-    tars = [
-        ":base",
-        ":bazelisk_bin",
-    ],
-)
-
-oci_tarball(
-    name = "bazelisk.tar",
-    image = ":bazelisk",
-    repo_tags = ["bazel-container:bazelisk"],
-)
-
-oci_push(
-    name = "push",
-    image = ":bazelisk",
-    remote_tags = [
-        "bazelisk",
-        "bazelisk-v1.25.0",
-    ],
-    repository = "ghcr.io/f110/bazel-container",
-)
-
-load("//private/deb:deb_pkg.bzl", "deb_pkg")
-load("@rules_distroless//distroless:defs.bzl", "cacerts", "passwd")
-load("@rules_pkg//pkg:mappings.bzl", "pkg_filegroup", "pkg_mklink")
 
 cacerts(
     name = "cacerts",
@@ -205,7 +125,7 @@ pkg_tar(
 )
 
 oci_image(
-    name = "bazelisk-debian",
+    name = "bazelisk",
     architecture = "amd64",
     entrypoint = ["/usr/local/bin/bazel"],
     labels = {
@@ -222,14 +142,17 @@ oci_image(
 )
 
 oci_tarball(
-    name = "bazelisk-debian.tar",
-    image = ":bazelisk-debian",
-    repo_tags = ["bazel-container:bazelisk-debian"],
+    name = "bazelisk.tar",
+    image = ":bazelisk",
+    repo_tags = [
+        "bazel-container:bazelisk",
+        "bazel-container:bazelisk-debian",
+    ],
 )
 
 oci_push(
-    name = "push-debian",
-    image = ":bazelisk-debian",
+    name = "push",
+    image = ":bazelisk",
     remote_tags = [
         "bazelisk-debian12",
         "bazelisk-v1.25.0-debian12",
