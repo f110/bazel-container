@@ -90,8 +90,8 @@ oci_register_toolchains(
 
 http_file(
     name = "bazelisk",
-    sha256 = "fd8fdff418a1758887520fa42da7e6ae39aefc788cf5e7f7bb8db6934d279fc4",
-    urls = ["https://github.com/bazelbuild/bazelisk/releases/download/v1.25.0/bazelisk-linux-amd64"],
+    sha256 = "e1508323f347ad1465a887bc5d2bfb91cffc232d11e8e997b623227c6b32fb76",
+    urls = ["https://github.com/bazelbuild/bazelisk/releases/download/v1.27.0/bazelisk-linux-amd64"],
 )
 
 go_repository(
