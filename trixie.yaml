@@ -1,17 +1,22 @@
-snapshot:
-  distro:
-    bookworm:
-      debian: 20240510T205852Z
+version: 1
+
+sources:
+  - channel: trixie main
+    url: https://snapshot-cloudflare.debian.org/archive/debian/20251201T030959Z
+
+archs:
+  - amd64
+
 packages:
   - base-files
   - base-passwd
-  - ca-certificates
   - tzdata
   - netbase
   - libc6
-  - libssl3
+  - libssl3t64
   - coreutils
   - debianutils
+  - ca-certificates
   - grep
   - sed
   - findutils
@@ -26,9 +31,9 @@ packages:
   - curl
   - git
   - python3-minimal
-  - python3-distutils
-  - libpython3.11-stdlib
+  - python3-distlib
+  - libpython3.13-stdlib
   - bash
   - dash
   - automake
-  - pkg-config
+  - pkgconf

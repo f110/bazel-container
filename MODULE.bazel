@@ -1,6 +1,22 @@
-###############################################################################
-# Bazel now uses Bzlmod by default to manage external dependencies.
-# Please consider migrating your external dependencies from WORKSPACE to MODULE.bazel.
-#
-# For more details, please check https://github.com/bazelbuild/bazel/issues/18958
-###############################################################################
+bazel_dep(name = "rules_oci", version = "2.2.6")
+bazel_dep(name = "rules_pkg", version = "1.1.0")
+bazel_dep(name = "rules_python", version = "1.6.1")
+bazel_dep(name = "rules_distroless", version = "0.6.1")
+
+http_file = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "http_file")
+
+http_file(
+    name = "bazelisk",
+    sha256 = "e1508323f347ad1465a887bc5d2bfb91cffc232d11e8e997b623227c6b32fb76",
+    urls = ["https://github.com/bazelbuild/bazelisk/releases/download/v1.27.0/bazelisk-linux-amd64"],
+)
+
+apt = use_extension("@rules_distroless//apt:extensions.bzl", "apt")
+
+apt.install(
+    name = "trixie",
+    manifest = "//:trixie.yaml",
+    lock = "//:trixie.lock.json",
+)
+
+use_repo(apt, "trixie")

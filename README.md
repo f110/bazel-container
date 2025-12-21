@@ -12,8 +12,10 @@ Feel free to use it in your workflow and the patch is welcome!
 
 ## ghcr.io/f110/bazel-container:bazelisk
 
+Deprecated.
+
 This container is built with chisel based on Ubuntu.
 
-## ghcr.io/f110/bazel-container:bazelisk-debian12
+## ghcr.io/f110/bazel-container:bazelisk-debian13
 
-This container is based on Debian12.
+This container is based on Debian13.
