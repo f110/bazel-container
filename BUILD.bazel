@@ -1,11 +1,6 @@
-load("@bazel_gazelle//:def.bzl", "DEFAULT_LANGUAGES", "gazelle", "gazelle_binary")
 load("@rules_pkg//:pkg.bzl", "pkg_tar")
-load("@rules_oci//oci:defs.bzl", "oci_image", "oci_push", "oci_tarball")
-load("//private/deb:deb_pkg.bzl", "deb_pkg")
+load("@rules_oci//oci:defs.bzl", "oci_image", "oci_push", "oci_load")
 load("@rules_distroless//distroless:defs.bzl", "cacerts", "passwd")
-load("@rules_pkg//pkg:mappings.bzl", "pkg_filegroup", "pkg_mklink")
-
-gazelle(name = "gazelle")
 
 pkg_tar(
     name = "bazelisk_bin",
@@ -17,7 +12,7 @@ pkg_tar(
 
 cacerts(
     name = "cacerts",
-    package = "@debian12_ca-certificates//:data",
+    package = "@trixie//ca-certificates/amd64:data",
 )
 
 passwd(
@@ -35,127 +30,67 @@ passwd(
     ],
 )
 
-pkg_mklink(
-    name = "which_link",
-    link_name = "usr/bin/which",
-    target = "/usr/bin/which.debianutils",
-)
-
-pkg_mklink(
-    name = "aclocal_link",
-    link_name = "usr/bin/aclocal",
-    target = "/usr/bin/aclocal-1.16",
-)
-
-pkg_mklink(
-    name = "automake_link",
-    link_name = "usr/bin/automake",
-    target = "/usr/bin/automake-1.16",
-)
-
-pkg_mklink(
-    name = "awk_link",
-    link_name = "usr/bin/awk",
-    target = "/usr/bin/mawk",
-)
-
-pkg_mklink(
-    name = "nawk_link",
-    link_name = "usr/bin/nawk",
-    target = "/usr/bin/mawk",
-)
-
-pkg_mklink(
-    name = "pager_link",
-    link_name = "usr/bin/pager",
-    target = "/bin/more",
-)
-
-pkg_filegroup(
-    name = "links-debian",
-    srcs = [
-        ":aclocal_link",
-        ":automake_link",
-        ":awk_link",
-        ":nawk_link",
-        ":pager_link",
-        ":which_link",
-    ],
-)
-
-pkg_tar(
-    name = "alternatives-link",
-    srcs = [":links-debian"],
-)
-
+# Layer compaction
 pkg_tar(
     name = "base-debian",
     mode = "0755",
-    deps = deb_pkg(
-        "debian12",
-        "base-files",
-        "base-passwd",
-        "tzdata",
-        "netbase",
-        "libc6",
-        "libssl3",
-        "coreutils",
-        "debianutils",
-        "grep",
-        "sed",
-        "findutils",
-        "mawk",
-        "g++",
-        "zip",
-        "unzip",
-        "tar",
-        "gzip",
-        "patch",
-        "linux-libc-dev",
-        "curl",
-        "git",
-        "python3-minimal",
-        "python3-distutils",
-        "libpython3.11-stdlib",
-        "bash",
-        "dash",
-        "automake",
-        "pkg-config",
-    ),
+    deps = [
+        ":cacerts",
+        ":passwd",
+        # Dep packages
+        "@trixie//base-files/amd64",
+        "@trixie//base-passwd/amd64",
+        "@trixie//tzdata/amd64",
+        "@trixie//netbase/amd64",
+        "@trixie//libc6/amd64",
+        "@trixie//libssl3t64/amd64",
+        "@trixie//coreutils/amd64",
+        "@trixie//debianutils/amd64",
+        "@trixie//grep/amd64",
+        "@trixie//sed/amd64",
+        "@trixie//findutils/amd64",
+        "@trixie//mawk/amd64",
+        "@trixie//g++/amd64",
+        "@trixie//zip/amd64",
+        "@trixie//unzip/amd64",
+        "@trixie//tar/amd64",
+        "@trixie//gzip/amd64",
+        "@trixie//patch/amd64",
+        "@trixie//linux-libc-dev/amd64",
+        "@trixie//curl/amd64",
+        "@trixie//git/amd64",
+        "@trixie//python3-minimal/amd64",
+        "@trixie//python3-distlib/amd64",
+        "@trixie//libpython3.13-stdlib/amd64",
+        "@trixie//bash/amd64",
+        "@trixie//dash/amd64",
+        "@trixie//automake/amd64",
+        "@trixie//pkgconf/amd64",
+    ]
 )
 
 oci_image(
     name = "bazelisk",
-    architecture = "amd64",
-    entrypoint = ["/usr/local/bin/bazel"],
-    labels = {
-        "org.opencontainers.image.source": "https://github.com/f110/bazel-container",
-    },
     os = "linux",
+    architecture = "amd64",
     tars = [
         ":base-debian",
-        ":alternatives-link",
-        ":passwd",
-        ":cacerts",
         ":bazelisk_bin",
-    ],
+    ]
 )
 
-oci_tarball(
+oci_load(
     name = "bazelisk.tar",
     image = ":bazelisk",
-    repo_tags = [
-        "bazel-container:bazelisk",
-        "bazel-container:bazelisk-debian",
-    ],
+    repo_tags = ["bazel-container:debian13"]
 )
 
 oci_push(
     name = "push",
     image = ":bazelisk",
     remote_tags = [
-        "bazelisk-debian12",
-        "bazelisk-v1.25.0-debian12",
+        "bazelisk-debian13",
+        "bazelisk-v1.27.0-debian13",
     ],
     repository = "ghcr.io/f110/bazel-container",
 )
