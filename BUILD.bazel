@@ -66,6 +66,7 @@ pkg_tar(
         "@trixie//dash/amd64",
         "@trixie//automake/amd64",
         "@trixie//pkgconf/amd64",
+        "@trixie//diffutils/amd64",
     ]
 )
 
