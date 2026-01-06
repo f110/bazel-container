@@ -12,11 +12,9 @@ http_file(
 )
 
 apt = use_extension("@rules_distroless//apt:extensions.bzl", "apt")
-
 apt.install(
     name = "trixie",
-    manifest = "//:trixie.yaml",
     lock = "//:trixie.lock.json",
+    manifest = "//:trixie.yaml",
 )
-
 use_repo(apt, "trixie")
