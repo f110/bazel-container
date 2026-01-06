@@ -74,6 +74,10 @@ oci_image(
     name = "bazelisk",
     os = "linux",
     architecture = "amd64",
+    entrypoint = ["/usr/local/bin/bazel"],
+    labels = {
+        "org.opencontainers.image.source": "https://github.com/f110/bazel-container",
+    },
     tars = [
         ":base-debian",
         ":bazelisk_bin",
