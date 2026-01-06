@@ -90,6 +90,7 @@ oci_push(
     name = "push",
     image = ":bazelisk",
     remote_tags = [
+        "bazelisk",
         "bazelisk-debian13",
         "bazelisk-v1.27.0-debian13",
     ],
