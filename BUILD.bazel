@@ -5,7 +5,7 @@ load("@rules_distroless//distroless:defs.bzl", "cacerts", "passwd")
 pkg_tar(
     name = "bazelisk_bin",
     files = {
-        "@bazelisk//file": "/usr/local/bin/bazel",
+        "@bazelisk//:file": "/usr/local/bin/bazel",
     },
     mode = "0755",
 )
@@ -90,13 +90,15 @@ oci_load(
     repo_tags = ["bazel-container:debian13"]
 )
 
+load(":bazelisk.bzl", "BAZELISK_VERSION")
+
 oci_push(
     name = "push",
     image = ":bazelisk",
     remote_tags = [
         "bazelisk",
         "bazelisk-debian13",
-        "bazelisk-v1.27.0-debian13",
+        "bazelisk-%s-debian13" % BAZELISK_VERSION,
     ],
     repository = "ghcr.io/f110/bazel-container",
 )
