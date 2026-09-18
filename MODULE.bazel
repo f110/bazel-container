@@ -8,7 +8,7 @@ apt.sources_list(
     components = ["main"],
     suites = ["trixie"],
     types = ["deb"],
-    uris = ["https://snapshot-cloudflare.debian.org/archive/debian/20251201T030959Z"],
+    uris = ["https://snapshot-cloudflare.debian.org/archive/debian/20260918T143616Z"],
 )
 apt.install(
     dependency_set = "trixie",
