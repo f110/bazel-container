@@ -1,3 +1,3 @@
 .PHONY: update-lock
 update-lock:
-	bazel run @trixie//:lock
+	bazel mod deps --lockfile_mode=refresh

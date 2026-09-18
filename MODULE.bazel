@@ -1,13 +1,50 @@
-bazel_dep(name = "rules_oci", version = "2.2.6")
+bazel_dep(name = "rules_oci", version = "2.3.0")
 bazel_dep(name = "rules_pkg", version = "1.1.0")
-bazel_dep(name = "rules_python", version = "1.6.1")
-bazel_dep(name = "rules_distroless", version = "0.6.1")
+bazel_dep(name = "rules_distroless", version = "0.9.4")
 
 apt = use_extension("@rules_distroless//apt:extensions.bzl", "apt")
+apt.sources_list(
+    architectures = ["amd64"],
+    components = ["main"],
+    suites = ["trixie"],
+    types = ["deb"],
+    uris = ["https://snapshot-cloudflare.debian.org/archive/debian/20251201T030959Z"],
+)
 apt.install(
-    name = "trixie",
-    lock = "//:trixie.lock.json",
-    manifest = "//:trixie.yaml",
+    dependency_set = "trixie",
+    packages = [
+        "base-files",
+        "base-passwd",
+        "tzdata",
+        "netbase",
+        "libc6",
+        "libssl3t64",
+        "coreutils",
+        "debianutils",
+        "ca-certificates",
+        "grep",
+        "sed",
+        "findutils",
+        "mawk",
+        "g++",
+        "zip",
+        "unzip",
+        "tar",
+        "gzip",
+        "patch",
+        "linux-libc-dev",
+        "curl",
+        "git",
+        "python3-minimal",
+        "python3-distlib",
+        "libpython3.13-stdlib",
+        "bash",
+        "dash",
+        "automake",
+        "pkgconf",
+        "diffutils",
+    ],
+    suites = ["trixie"],
 )
 use_repo(apt, "trixie")
 
