@@ -188,7 +188,7 @@
   "moduleExtensions": {
     "//:bazelisk.bzl%bazelisk_extension": {
       "general": {
-        "bzlTransitiveDigest": "HTI85VhVCPhaUTzLZoKZVeealhua+DcxTJ0KUAz4Wko=",
+        "bzlTransitiveDigest": "nTlyIfoAulberTASq3/VL7h0mE8SmMo53FO4uqP6zNs=",
         "usagesDigest": "32Z4qVmkepMgOzn+b64d1FIpcUFxLu/5VLrqUFqWxNc=",
         "recordedInputs": [],
         "generatedRepoSpecs": {

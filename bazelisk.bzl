@@ -1,5 +1,5 @@
-BAZELISK_VERSION = "v1.29.0"
-BAZELISK_CHECKSUM = "5a408715e932c0250d28bd84555f12edbf70117de42f9181691c736eacc4a992"
+BAZELISK_VERSION = "v1.30.0"
+BAZELISK_CHECKSUM = "a248ae2b2b62b5baebb748f6fba7203bff1a27e5d01b55399a8406744cb539e8"
 BAZELISK_URL = "https://github.com/bazelbuild/bazelisk/releases/download/%s/bazelisk-linux-amd64" % BAZELISK_VERSION
 
 def _bazelisk_binary_impl(ctx):
